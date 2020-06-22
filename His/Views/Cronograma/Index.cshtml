@@ -11,8 +11,7 @@
 			</div>
 		</div>
 
-
-		<partial name="Create" model="new HistClinica.Models.D012_CRONOMEDICO()">
+		@Html.Partial("Create", new His.Models.D012_CRONOMEDICO())
 
 			@if (ViewBag.message != null)
 			{

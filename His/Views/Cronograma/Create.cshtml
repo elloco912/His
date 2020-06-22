@@ -9,11 +9,11 @@
 					<label>Medico</label>
 				</div>
 				<div class="col-sm-8">
-					@Html.DropDownListFor(m => m.idMedico, new SelectList(ViewBag.listamedicos, "idMedico", "nombres"), "Seleccione", new { @class = "form-control" ,
-				   data_cascade_combo = "#stypes",
-				   data_cascade_combo_source = Url.Action("GetEspecialidad", "Cronograma"),
-				   data_cascade_combo_param_name = "id"
-			   })
+					@*	@Html.DropDownListFor(m => m.idMedico, new SelectList(ViewBag.listamedicos, "idMedico", "nombres"), "Seleccione", new { @class = "form-control" ,
+			data_cascade_combo = "#stypes",
+			data_cascade_combo_source = Url.Action("GetEspecialidad", "Cronograma"),
+			data_cascade_combo_param_name = "id"
+		}) *@
 				</div>
 			</div>
 		</div>
@@ -23,7 +23,7 @@
 					<label>Especialidad</label>
 				</div>
 				<div class="col-sm-8">
-					@Html.DropDownListFor(m => m.idEspecialidad, new SelectList(ViewBag.listaespecialidades, "idtab", "descripcion"), new { @class = "form-control", id = "stypes" })
+					@*		@Html.DropDownListFor(m => m.idEspecialidad, new SelectList(ViewBag.listaespecialidades, "idtab", "descripcion"), new { @class = "form-control", id = "stypes" })*@
 				</div>
 			</div>
 		</div>
@@ -33,7 +33,7 @@
 					<label>Consultorio</label>
 				</div>
 				<div class="col-sm-8">
-					@Html.DropDownListFor(m => m.idConsultorio, new SelectList(ViewBag.listaconsultorio, "idtab", "descripcion"), new { @class = "form-control" })
+					@*	@Html.DropDownListFor(m => m.idConsultorio, new SelectList(ViewBag.listaconsultorio, "idtab", "descripcion"), new { @class = "form-control" }) *@
 				</div>
 			</div>
 		</div>
@@ -65,7 +65,7 @@
 					<label>Hora Inicio</label>
 				</div>
 				<div class="col-sm-8">
-					@Html.DropDownListFor(m => m.hrInicio, new SelectList(ViewBag.listahoras), new { @class = "form-control" })
+					@*	@Html.DropDownListFor(m => m.hrInicio, new SelectList(ViewBag.listahoras), new { @class = "form-control" }) *@
 				</div>
 			</div>
 		</div>
@@ -75,7 +75,7 @@
 					<label>Hora Fin</label>
 				</div>
 				<div class="col-sm-8">
-					@Html.DropDownListFor(m => m.hrFin, new SelectList(ViewBag.listahoras), new { @class = "form-control" })
+					@*	@Html.DropDownListFor(m => m.hrFin, new SelectList(ViewBag.listahoras), new { @class = "form-control" }) *@
 				</div>
 			</div>
 		</div>
