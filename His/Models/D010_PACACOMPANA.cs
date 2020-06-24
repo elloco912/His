@@ -8,7 +8,6 @@ namespace His.Models
 {
 	public class D010_PACACOMPANA
 	{
-		[Key]
 		public int idPacAcom { get; set; }
 		public string tpDocumento { get; set; }
 		public int? dniAcom { get; set; }

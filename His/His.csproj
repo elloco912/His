@@ -158,7 +158,6 @@
     <Compile Include="Models\T068_CITA.cs" />
     <Compile Include="Models\T109_ESTADOCITA.cs" />
     <Compile Include="Models\T120_EMPLEADO.cs" />
-    <Compile Include="Models\T120_ESPECIALIDAD.cs" />
     <Compile Include="Models\T212_MEDICO.cs" />
     <Compile Include="Models\T218_SERVICIOSCLI.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

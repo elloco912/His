@@ -8,7 +8,6 @@ namespace His.Models
 {
 	public class T001_PACCONVENIO
 	{
-		[Key]
 		public int idPacConvenio { get; set; }
 		public string ordAtenMedica { get; set; }
 		public int? idParentesco { get; set; }

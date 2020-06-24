@@ -43,7 +43,7 @@ namespace His.Repositories
             List<D00_TBDETALLE> detalles = new List<D00_TBDETALLE>();            
             if (filtro == "")
             {
-                DataSet objects = UtilRepository.GetAllData("");
+                DataSet objects = UtilRepository.getAllData("");
                 foreach (DataRow dr in objects.Tables["Objects"].Rows)
                 {
                     detalle = new D00_TBDETALLE
@@ -69,7 +69,7 @@ namespace His.Repositories
         public D00_TBDETALLE GetDetalle(int? id)
         {
             D00_TBDETALLE detalle=new D00_TBDETALLE();
-            DataSet objects = UtilRepository.GetAllData("");
+            DataSet objects = UtilRepository.getAllData("");
             foreach (DataRow dr in objects.Tables["Objects"].Rows)
             {
                 detalle = new D00_TBDETALLE
@@ -85,65 +85,5 @@ namespace His.Repositories
             }
             return detalle;
         }
-
-        //public async Task<D00_TBDETALLE> GetById(int? Id)
-        //{
-        //    DetalleDTO listaDetalle = new DetalleDTO();
-        //    listaDetalle = await (from detalle in _context.D00_TBDETALLE
-        //                         where detalle.idTab == 1 && detalle.idDet == Id
-        //                         select new DetalleDTO
-        //                         {
-        //                             idDet = detalle.idDet,
-        //                             coddetTab = detalle.coddetTab,
-        //                             descripcion = detalle.descripcion
-        //                         }).FirstOrDefaultAsync();
-        //    return listaDetalle;
-        //}
-
-        //public async Task<string> InsertDetalle(D00_TBDETALLE Detalle)
-        //{
-        //    try
-        //    {
-        //        await _context.D00_TBDETALLE.AddAsync(new D00_TBDETALLE()
-        //        {
-        //            coddetTab = Detalle.coddetTab,
-        //            descripcion = Detalle.descripcion,
-        //            idTab = 1
-        //    });
-        //        await Save();
-        //        return "Ingreso Exitoso";
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return "Error en el guardado " + ex.StackTrace;
-        //    }
-        //}
-
-        //public async Task DeleteDetalle(int DetalleID)
-        //{
-        //    D00_TBDETALLE Detalle = await _context.D00_TBDETALLE.FindAsync(DetalleID);
-        //    _context.D00_TBDETALLE.Remove(Detalle);
-        //    await Save();
-        //}
-
-        //public async Task<string> UpdateDetalle(D00_TBDETALLE Detalle)
-        //{
-        //    try
-        //    {
-        //        await _context.D00_TBDETALLE.AddAsync(new D00_TBDETALLE()
-        //        {
-        //            idDet = Detalle.idDet,
-        //            coddetTab = Detalle.coddetTab,
-        //            descripcion = Detalle.descripcion,
-        //            idTab = 1
-        //        });
-        //        await Save();
-        //        return "Ingreso Exitoso";
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return "Error en el guardado " + ex.StackTrace;
-        //    }
-        //}
     }
 }

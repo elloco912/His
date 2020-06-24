@@ -8,7 +8,6 @@ namespace His.Models
 {
 	public class T001_PACASEGURADO
 	{
-		[Key]
 		public int idAsegurado { get; set; }
 		public string cobertura { get; set; }
 		public string ordenAtenMed { get; set; }
@@ -36,7 +35,7 @@ namespace His.Models
 		public int? copagoVariable { get; set; }
 		public int? finCarencia { get; set; }
 		public string convenio { get; set; }
-		public double? descuento { get; set; }
+		public decimal? descuento { get; set; }
 		public int? idPaciente { get; set; }
 		public string estado { get; set; }
 	}

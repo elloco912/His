@@ -8,7 +8,6 @@ namespace His.Models
 {
 	public class T218_SERVICIOSCLI
 	{
-		[Key]
 		public int idservicioCli { get; set; }
 		public string descripcion { get; set; }
 		public string estado { get; set; }
