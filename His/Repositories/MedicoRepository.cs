@@ -1,4 +1,8 @@
-﻿using System;
+﻿using His.Models;
+using His.Repositories;
+using System;
+using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -6,99 +10,60 @@ namespace HistClinica.Repositories.Repositories
 {
     public class MedicoRepository 
     {
-        //private readonly ClinicaServiceContext _context;
-        //public MedicoRepository(ClinicaServiceContext context)
-        //{
-        //    _context = context;
-        //}
+        private static UtilRepository UtilRepository = new UtilRepository();
+        public static T212_MEDICO GetMedico(DataRow dr)
+        {
+            return _ = new T212_MEDICO
+            {
+                idEmpleado = Convert.ToInt32(dr["idMedico"]),
+                codMedico = dr["codMedico"].ToString(), 
+                condicion = dr["condicion"].ToString(), 
+                idEspecialidad = Convert.ToInt32(dr["idEspecialidad"].ToString()), 
+                idMedico = Convert.ToInt32(dr["idMedico"].ToString()), 
+                idtpDocumento = Convert.ToInt32(dr["idtpDocumento"].ToString()), 
+                nroColegio = Convert.ToInt32(dr["nroColegio"].ToString()), 
+                nroRne = dr["nroRne"].ToString(), 
+                nroRuc = Convert.ToInt32(dr["nroRuc"].ToString()), 
+                idPersona = Convert.ToInt32(dr["idPersona"]),
+                estado = dr["estado"].ToString()
+            };
+        }
+        public List<T212_MEDICO> listarMedicos()
+        {
+            List<T212_MEDICO> empleados = new List<T212_MEDICO>();
+            DataSet objects = UtilRepository.getAllData("usp_ListarMedico");
+            foreach (DataRow dr in objects.Tables["Objects"].Rows)
+            {
+                empleados.Add(GetMedico(dr));
+            }
+            return empleados;
+        }
 
-        //private bool disposed = false;
-        //protected virtual void Dispose(bool disposing)
-        //{
-        //    if (!this.disposed)
-        //    {
-        //        if (disposing)
-        //        {
-        //            _context.Dispose();
-        //        }
-        //    }
-        //    this.disposed = true;
-        //}
-        //public void Dispose()
-        //{
-        //    Dispose(true);
-        //    GC.SuppressFinalize(this);
-        //}
-        //public async Task Save()
-        //{
-        //    await _context.SaveChangesAsync();
-        //}
+        public T212_MEDICO listarxIdMedico(int id)
+        {
+            T212_MEDICO Medico = new T212_MEDICO();
 
-        //public async Task<bool> MedicoExists(int? id)
-        //{
-        //    return await _context.T212_MEDICO.AnyAsync(e => e.idMedico == id);
-        //}
-        //public async Task<string> InsertMedico(PersonaDTO Persona, int idPersona, int idEmpleado)
-        //{
-        //    try
-        //    {
-        //        T212_MEDICO Medico = new T212_MEDICO()
-        //        {
-        //            idEmpleado = idEmpleado,
-        //            idPersona = idPersona,
-        //            nroColegio = Persona.personal.numeroColegio,
-        //            nroRuc = Persona.ruc,
-        //            idEspecialidad = Persona.personal.idEspecialidad,
-        //            estado = Persona.personal.estadoPersonal,
-        //            codMedico = Persona.personal.codMedico,
-        //            condicion = Persona.personal.condicion,
-        //            nroRne = Persona.personal.nroRne,
-        //            idtpDocumento = Persona.idTipoDocumento
-        //        };
-        //        await _context.T212_MEDICO.AddAsync(Medico);
-        //        await Save();
-        //        return "Ingreso Exitoso Medico";
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return "Error en el guardado " + ex.Message;
-        //    }
-        //}
-        //public async Task<string> UpdateMedico(PersonaDTO Persona)
-        //{
-        //    try
-        //    {
-        //        T212_MEDICO Medico = new T212_MEDICO()
-        //        {
-        //            idPersona = Persona.idPersona,
-        //            idEmpleado = Persona.personal.idEmpleado,
-        //            idMedico = (int)Persona.personal.idMedico,
-        //            nroColegio = Persona.personal.numeroColegio,
-        //            nroRuc = Persona.ruc,
-        //            idEspecialidad = Persona.personal.idEspecialidad,
-        //            estado = Persona.personal.estadoPersonal,
-        //            codMedico = Persona.personal.codMedico,
-        //            condicion = Persona.personal.condicion,
-        //            nroRne = Persona.personal.nroRne,
-        //            idtpDocumento = Persona.idTipoDocumento
-        //        };
-        //        _context.Update(Medico);
-        //        await Save();
-        //        return "Actualizacion Exitosa Medico";
-        //    }
-        //    catch (Exception ex)
-        //    {
+            DataSet objects = UtilRepository.getDataById("usp_listarxIdmedico", id);
+            foreach (DataRow dr in objects.Tables["Objects"].Rows)
+            {
+                Medico = GetMedico(dr);
+            }
+            return Medico;
+        }
 
-        //        return "Error en el guardado " + ex.StackTrace;
-        //    }
-        //}
+        public string eliminarMedico(int id)
+        {
+            return UtilRepository.deleteById("usp_EliminarMedico", id);
+        }
 
-        //public async Task<int> GetIdMedico(int? id)
-        //{
-        //    int idMedico = await (from p in _context.T212_MEDICO
-        //                          where p.idPersona == id
-        //                          select p.idMedico).FirstOrDefaultAsync();
-        //    return idMedico;
-        //}
+        public string insertarMedico(T212_MEDICO medico)
+        {
+            return UtilRepository.insertaActualiza("usp_InsertarMedico", medico, 1);
+        }
+
+        public string actualizarMedico(T212_MEDICO medico)
+        {
+            return UtilRepository.insertaActualiza("usp_ActualizarMedico", medico, 2);
+        }
     }
 }

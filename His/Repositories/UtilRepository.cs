@@ -17,7 +17,7 @@ namespace His.Repositories
             public bool valida { get; set; }
         }
 
-		public DataSet GetAllData(string query)
+		public DataSet getAllData(string query)
 		{
             try
             {
@@ -37,7 +37,7 @@ namespace His.Repositories
 			}
 		}
 
-		public DataSet GetDataById(string query,int id)
+		public DataSet getDataById(string query,int id)
 		{
 			try
 			{
@@ -58,7 +58,7 @@ namespace His.Repositories
 			}
 		}
 
-		public string DeleteById(string query, int id)
+		public string deleteById(string query, int id)
         {
 			try
 			{
@@ -108,7 +108,7 @@ namespace His.Repositories
             return logueo;
 		}
 
-		public string InsertaActualiza (string query,Object objecto,int tipo)
+		public string insertaActualiza (string query,Object objecto,int tipo)
         {
 			string mensaje="";
             try
