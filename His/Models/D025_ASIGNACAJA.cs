@@ -9,7 +9,7 @@ namespace His.Models
 {
 	public class D025_ASIGNACAJA
 	{
-		public int idCaja { get; set; }
-		public int idEmpleado { get; set; }
+		public int? idCaja { get; set; }
+		public int? idEmpleado { get; set; }
 	}
 }

@@ -8,7 +8,6 @@ namespace His.Models
 {
 	public class D012_CRONOMEDICO
 	{
-		[Key]
 		public int idProgramMedica { get; set; }
 		public string mes { get; set; }
 		public string semana { get; set; }
@@ -20,6 +19,6 @@ namespace His.Models
 		public int? idConsultorio { get; set; }
 		public string hrInicio { get; set; }
 		public string hrFin { get; set; }
-		public int? idEstado { get; set; }
+		public string idEstado { get; set; }
 	}
 }

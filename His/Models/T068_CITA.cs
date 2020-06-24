@@ -5,7 +5,6 @@ namespace His.Models
 {
 	public class T068_CITA
 	{
-		[Key]
 		public int idCita { get; set; }
 		public int? codCita { get; set; }
 		public int? nroCita { get; set; }
@@ -19,10 +18,10 @@ namespace His.Models
 		public string estadoReprogram { get; set; }
 		public string ejecutado { get; set; }
 		public string prioridad { get; set; }
-		public double? precio { get; set; }
-		public double? descuento { get; set; }
-		public double? coa { get; set; }
-		public double? igv { get; set; }
+		public decimal? precio { get; set; }
+		public decimal? descuento { get; set; }
+		public decimal? coa { get; set; }
+		public decimal? igv { get; set; }
 		public int? tipoCita { get; set; }
 		public string motivoRepro { get; set; }
 		public string motivoAnula { get; set; }

@@ -13,6 +13,21 @@ namespace His.Repositories
     public class UsuarioRepository
     {
         private static UtilRepository UtilRepository = new UtilRepository();
+        public static D001_USUARIO Getusuario(DataRow dr)
+        {
+            return _ = new D001_USUARIO
+            {
+                idUsuario = Convert.ToInt32(dr["idUsuario"]),
+                loginUser = dr["loginUser"].ToString(),
+                claveUser = dr["claveUser"].ToString(),
+                idEmpleado = Convert.ToInt32(dr["idEmpleado"]),
+                estado = dr["estado"].ToString(),
+                //fechaCrea = dr["fechaCrea"].ToString(),
+                //fechaMod = dr["fechaMod"].ToString(),
+                //usuCrea = dr["usuCrea"].ToString(),
+                //usuMod = dr["usuMod"].ToString()
+            };
+        }
 
         public List<D001_USUARIO> listarUsuarios()
         {
@@ -20,15 +35,7 @@ namespace His.Repositories
             DataSet objects = UtilRepository.getAllData("usp_listarUsuario");
             foreach (DataRow dr in objects.Tables["Objects"].Rows)
             {
-                var usuario = new D001_USUARIO
-                {
-                    idUsuario = Convert.ToInt32(dr["idUsuario"]),
-                    claveUser = dr["claveUser"].ToString(),
-                    loginUser = dr["loginUser"].ToString(),
-                    estado = dr["estado"].ToString(),
-                    idEmpleado = Convert.ToInt32(dr["idEmpleado"])
-                };
-                usuarios.Add(usuario);
+                usuarios.Add(Getusuario(dr));
             }
             return usuarios;
         }
@@ -40,14 +47,7 @@ namespace His.Repositories
             DataSet objects = UtilRepository.getDataById("usp_listarxIdUsuario", id);
             foreach (DataRow dr in objects.Tables["Objects"].Rows)
             {
-                usuario = new D001_USUARIO
-                {
-                    idUsuario = Convert.ToInt32(dr["idUsuario"]),
-                    claveUser = dr["claveUser"].ToString(),
-                    loginUser = dr["loginUser"].ToString(),
-                    estado = dr["estado"].ToString(),
-                    idEmpleado = Convert.ToInt32(dr["idEmpleado"])
-                };
+                usuario = Getusuario(dr);
             }
             return usuario;
         }

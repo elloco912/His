@@ -15,28 +15,28 @@ namespace HistClinica.Repositories.Repositories
         {
             return _ = new T212_MEDICO
             {
-                idEmpleado = Convert.ToInt32(dr["idMedico"]),
-                codMedico = dr["codMedico"].ToString(), 
-                condicion = dr["condicion"].ToString(), 
-                idEspecialidad = Convert.ToInt32(dr["idEspecialidad"].ToString()), 
                 idMedico = Convert.ToInt32(dr["idMedico"].ToString()), 
-                idtpDocumento = Convert.ToInt32(dr["idtpDocumento"].ToString()), 
+                codMedico = dr["codMedico"].ToString(), 
                 nroColegio = Convert.ToInt32(dr["nroColegio"].ToString()), 
                 nroRne = dr["nroRne"].ToString(), 
                 nroRuc = Convert.ToInt32(dr["nroRuc"].ToString()), 
+                idtpDocumento = Convert.ToInt32(dr["idtpDocumento"].ToString()), 
+                condicion = dr["condicion"].ToString(), 
+                idEmpleado = Convert.ToInt32(dr["idMedico"]),
+                idEspecialidad = Convert.ToInt32(dr["idEspecialidad"].ToString()), 
                 idPersona = Convert.ToInt32(dr["idPersona"]),
                 estado = dr["estado"].ToString()
             };
         }
         public List<T212_MEDICO> listarMedicos()
         {
-            List<T212_MEDICO> empleados = new List<T212_MEDICO>();
+            List<T212_MEDICO> medicos = new List<T212_MEDICO>();
             DataSet objects = UtilRepository.getAllData("usp_ListarMedico");
             foreach (DataRow dr in objects.Tables["Objects"].Rows)
             {
-                empleados.Add(GetMedico(dr));
+                medicos.Add(GetMedico(dr));
             }
-            return empleados;
+            return medicos;
         }
 
         public T212_MEDICO listarxIdMedico(int id)
