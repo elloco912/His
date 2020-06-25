@@ -17,7 +17,7 @@ namespace His.Controllers
         private UsuarioRepository _usuarioRepository = new UsuarioRepository();
 
         // GET: Persona
-        public async Task<ActionResult> Index()
+        public ActionResult Index()
         {
             if (TempData["mensajepersona"] != null)
             {
@@ -27,7 +27,7 @@ namespace His.Controllers
         }
 
         // GET: Persona/Details/5
-        public async Task<ActionResult> Details(int? id)
+        public ActionResult Details(int? id)
         {
             if (id == null)
             {
@@ -44,7 +44,7 @@ namespace His.Controllers
         }
 
         // GET: Persona/Create
-        public async Task<ActionResult> Create()
+        public ActionResult Create()
         {
             //var lespecialidads = await _utilrepository.GetTipo("Especialidad");
             //ViewBag.listaespecialidades = lespecialidads;
@@ -60,7 +60,7 @@ namespace His.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create(PersonaDTO personaDTO)
+        public ActionResult Create(PersonaDTO personaDTO)
         {
             if (personaDTO != null)
             {
@@ -74,7 +74,7 @@ namespace His.Controllers
         // POST: Persona/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        public async Task<ActionResult> Editar(int? idpersona)
+        public ActionResult Editar(int? idpersona)
         {
             //var lespecialidads = await _utilrepository.GetTipo("Especialidad");
             //ViewBag.listaespecialidades = lespecialidads;
@@ -90,7 +90,7 @@ namespace His.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit(int? id, PersonaDTO personaDTO)
+        public ActionResult Edit(int? id, PersonaDTO personaDTO)
         {
             if (personaDTO != null)
             {
@@ -115,7 +115,7 @@ namespace His.Controllers
         }
 
         // GET: Persona/Delete/5
-        public async Task<ActionResult> Delete(int id)
+        public ActionResult Delete(int id)
         {
             if (id == null)
             {
@@ -134,14 +134,14 @@ namespace His.Controllers
         // POST: Persona/Delete/5
         [HttpPost, ActionName("Delete")]
         // [ValidateAntiForgeryToken]
-        public async Task<ActionResult> DeleteConfirmed(PersonaDTO personadto)
+        public ActionResult DeleteConfirmed(PersonaDTO personadto)
         {
             var persona =_personaRepository.listarxIdPersona((int)personadto.idPersona);
             _personaRepository.eliminarPersona(personadto.idPersona);
             return RedirectToAction(nameof(Index));
         }
 
-        public async Task<ActionResult> Asignar(int? id)
+        public ActionResult Asignar(int? id)
         {
             //var tipoEmpleados = await _utilrepository.GetTipo("Tipo Empleado");
             //ViewBag.lsttipoempleado = tipoEmpleados;
@@ -155,7 +155,7 @@ namespace His.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Asignar(PersonaDTO personaDTO)
+        public ActionResult Asignar(PersonaDTO personaDTO)
         {
             if (personaDTO.personal.idEmpleado != null)
             {

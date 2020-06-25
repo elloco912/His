@@ -345,3 +345,7 @@ F:\CEM\His\bin\EntityFramework.dll
 F:\CEM\His\bin\EntityFramework.SqlServer.dll
 F:\CEM\His\bin\EntityFramework.xml
 F:\CEM\His\bin\EntityFramework.SqlServer.xml
+C:\Users\User\Desktop\His\His\His\bin\EntityFramework.dll
+C:\Users\User\Desktop\His\His\His\bin\EntityFramework.SqlServer.dll
+C:\Users\User\Desktop\His\His\His\bin\EntityFramework.xml
+C:\Users\User\Desktop\His\His\His\bin\EntityFramework.SqlServer.xml
