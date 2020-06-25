@@ -49,12 +49,12 @@
 					</ul>
 				</div>
 				<input type="submit" id="btnIngresar" value="Ingresa">
-				//	@if (ViewBag.error != null)
-				//	{
-				<!--	<div class="col-sm-12 alert alert-danger text-center" role="alert" style="margin-top: 15px;">
-
-			</div> -->
-				//	}
+					if (ViewBag.error != null)
+					{
+					<div class="col-sm-12 alert alert-danger text-center" role="alert" style="margin-top: 15px;">
+						@ViewBag.error
+			</div>
+					}
 			}
 		</div>
 		<div class="clear"></div>

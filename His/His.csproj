@@ -181,6 +181,7 @@
     <Content Include="Content\images\gestionar.png" />
     <Content Include="Content\images\gestioncita.png" />
     <Content Include="Content\images\imgclinica.png" />
+    <Content Include="Content\images\logo_cem.png" />
     <Content Include="Content\images\pago.png" />
     <Content Include="Content\images\reportes.png" />
     <Content Include="favicon.ico" />
