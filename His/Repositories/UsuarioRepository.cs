@@ -1,4 +1,5 @@
-﻿using His.Models;
+﻿using His.DTO;
+using His.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -13,6 +14,7 @@ namespace His.Repositories
     public class UsuarioRepository
     {
         private static UtilRepository UtilRepository = new UtilRepository();
+        private static PersonaRepository PersonaRepository = new PersonaRepository();
         public static D001_USUARIO Getusuario(DataRow dr)
         {
             return _ = new D001_USUARIO
@@ -62,8 +64,22 @@ namespace His.Repositories
             return UtilRepository.deleteById("usp_eliminarUsuario", id);
         }
 
-        public string insertarUsuario(D001_USUARIO usuario)
+        public string insertarUsuario(PersonaDTO persona)
         {
+            persona = PersonaRepository.listarxIdPersona(persona.idPersona);
+            D001_USUARIO usuario = new D001_USUARIO()
+            {
+                idEmpleado = persona.personal.idEmpleado,
+                fechaCrea = DateTime.Now.ToString(),
+                loginUser = persona.apellidoPaterno.Substring(0, 1) + persona.nombres + persona.fecNacimiento.Substring(0, 2),
+                //claveUser = persona.asignacion.claveUser,
+                claveUser = persona.numeroDocumento.ToString(),
+                usuCrea = persona.asignacion.usuRegistra,
+                estado = "ACTIVO",
+                usuMod = "",
+                fechaMod = ""
+            };
+
             return UtilRepository.insertaActualiza("usp_InsertarUsuario", usuario,1);
         }
 

@@ -7,7 +7,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Threading.Tasks;
 
-namespace HistClinica.Repositories.Repositories
+namespace His.Repositories
 {
     public class PacienteRepository 
     {
@@ -78,12 +78,24 @@ namespace HistClinica.Repositories.Repositories
             }
             return pacientes;
         }
-
+        //ToDO: Terminar esto
         public T001_PACIENTE listarxIdPaciente(int id)
         {
             T001_PACIENTE paciente = new T001_PACIENTE();
 
             DataSet objects = UtilRepository.getDataById("usp_listarxIdPaciente", id);
+            foreach (DataRow dr in objects.Tables["Objects"].Rows)
+            {
+                paciente = GetPaciente(dr);
+            }
+            return paciente;
+        }
+        //ToDO: Terminar esto
+        public T001_PACIENTE listarxDni(int dni)
+        {
+            T001_PACIENTE paciente = new T001_PACIENTE();
+
+            DataSet objects = UtilRepository.getDataByDni("usp_BuscarDniPaciente", dni);
             foreach (DataRow dr in objects.Tables["Objects"].Rows)
             {
                 paciente = GetPaciente(dr);

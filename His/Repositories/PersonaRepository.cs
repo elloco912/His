@@ -1,4 +1,5 @@
-﻿using His.Models;
+﻿using His.DTO;
+using His.Models;
 using His.Repositories;
 using System;
 using System.Collections.Generic;
@@ -7,7 +8,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Threading.Tasks;
 
-namespace HistClinica.Repositories.Repositories
+namespace His.Repositories
 {
     public class PersonaRepository 
     {
@@ -75,29 +76,57 @@ namespace HistClinica.Repositories.Repositories
             return personas;
         }
 
-        public T000_PERSONA listarxIdPersona(int id)
+        public PersonaDTO listarxIdPersona(int? id)
         {
+            PersonalDTO personal = new PersonalDTO();
             T000_PERSONA persona = new T000_PERSONA();
 
-            DataSet objects = UtilRepository.getDataById("usp_listarxIdPersona", id);
+            DataSet objects = UtilRepository.getDataById("usp_listarxIdPersona", (int)id);
             foreach (DataRow dr in objects.Tables["Objects"].Rows)
             {
                 persona = GetPersona(dr);
+                personal = new PersonalDTO()
+                {
+                    idEmpleado = int.Parse(UtilRepository.GetData(dr,"idEmpleado")),
+                    idTipoEmpleado = int.Parse(UtilRepository.GetData(dr, "idTipoEmpleado")),
+                    fechaIngreso = (DateTime.Parse(UtilRepository.GetData(dr, "idTipoEmpleado"))).ToString("yyyy-MM-dd"),
+                    cargo = UtilRepository.GetData(dr, "cargo"),
+                    descArea = UtilRepository.GetData(dr,"descArea")
+                };
+                if (personal.idTipoEmpleado == 109)
+                {
+                    personal.idEspecialidad = int.Parse(UtilRepository.GetData(dr, "idEspecialidad"));
+                    personal.idMedico = int.Parse(UtilRepository.GetData(dr, "idMedico"));
+                    personal.numeroColegio =    int.Parse(UtilRepository.GetData(dr, "numeroColegio"));
+                }
             }
-            return persona;
+            PersonaDTO Persona = new PersonaDTO()
+            {
+                idPersona = persona.idPersona,
+                nombres = persona.nombres,
+                apellidoPaterno = persona.apePaterno,
+                apellidoMaterno = persona.apeMaterno,
+                fecNacimiento = persona.fecNace,
+                telefono = persona.telefono,
+                numeroDocumento = (int)persona.dniPersona,
+                ruc = persona.nroRuc,
+                personal = personal
+            };
+
+            return Persona;
         }
 
-        public string eliminarPersona(int id)
+        public string eliminarPersona(int? id)
         {
-            return UtilRepository.deleteById("usp_EliminarPersona", id);
+            return UtilRepository.deleteById("usp_EliminarPersona", (int)id);
         }
 
-        public string insertarPersona(T000_PERSONA persona)
+        public string insertarPersona(PersonaDTO persona)
         {
             return UtilRepository.insertaActualiza("usp_InsertarPersona", persona, 1);
         }
 
-        public string actualizarPersona(T000_PERSONA persona)
+        public string actualizarPersona(PersonaDTO persona)
         {
             return UtilRepository.insertaActualiza("usp_ActualizarPersona", persona, 2);
         }

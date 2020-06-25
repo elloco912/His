@@ -6,7 +6,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace HistClinica.Repositories.Repositories
+namespace His.Repositories
 {
     public class MedicoRepository 
     {

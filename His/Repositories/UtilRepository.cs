@@ -16,7 +16,10 @@ namespace His.Repositories
 			public string mensaje { get; set; }
             public bool valida { get; set; }
         }
-
+		public static string GetData(DataRow dr, string dato)
+		{
+			return dr[dato].ToString();
+		}
 		public DataSet getAllData(string query)
 		{
             try
@@ -36,7 +39,6 @@ namespace His.Repositories
 				return new DataSet();
 			}
 		}
-
 		public DataSet getDataById(string query,int id)
 		{
 			try
@@ -44,7 +46,7 @@ namespace His.Repositories
 				con.Open();
 				SqlCommand cm = new SqlCommand(query, con);
 				cm.CommandType = CommandType.StoredProcedure;
-				cm.Parameters.AddWithValue("@id", id);
+				cm.Parameters.AddWithValue("@nombres", id);
 				SqlDataAdapter adapter = new SqlDataAdapter(cm);
 				DataSet objects = new DataSet();
 				adapter.Fill(objects, "Objects");
@@ -53,6 +55,47 @@ namespace His.Repositories
 			}
 			catch(Exception e)
             {
+				Console.Write(e.Message);
+				return new DataSet();
+			}
+		}
+		public DataSet getDataByName(string query, string nombres)
+		{
+			try
+			{
+				con.Open();
+				SqlCommand cm = new SqlCommand(query, con);
+				cm.CommandType = CommandType.StoredProcedure;
+				cm.Parameters.AddWithValue("@nombres", nombres);
+				SqlDataAdapter adapter = new SqlDataAdapter(cm);
+				DataSet objects = new DataSet();
+				adapter.Fill(objects, "Objects");
+				con.Close();
+				return objects;
+			}
+			catch (Exception e)
+			{
+				Console.Write(e.Message);
+				return new DataSet();
+			}
+		}
+
+		public DataSet getDataByDni(string query, int prmDni)
+		{
+			try
+			{
+				con.Open();
+				SqlCommand cm = new SqlCommand(query, con);
+				cm.CommandType = CommandType.StoredProcedure;
+				cm.Parameters.AddWithValue("@prmDni", prmDni);
+				SqlDataAdapter adapter = new SqlDataAdapter(cm);
+				DataSet objects = new DataSet();
+				adapter.Fill(objects, "Objects");
+				con.Close();
+				return objects;
+			}
+			catch (Exception e)
+			{
 				Console.Write(e.Message);
 				return new DataSet();
 			}
@@ -76,7 +119,6 @@ namespace His.Repositories
 				return "Eliminacion incorrecta";
 			}
 		}
-
 		public ValidacionLogueo logueo(string query,string loginUser, string claveUser)
         {
 			ValidacionLogueo logueo = new ValidacionLogueo();
@@ -107,7 +149,6 @@ namespace His.Repositories
             }
             return logueo;
 		}
-
 		public string insertaActualiza (string query,Object objecto,int tipo)
         {
 			string mensaje="";
