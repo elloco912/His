@@ -33,16 +33,10 @@
 								@Html.DropDownListFor(m => m.personal.idTipoEmpleado, new SelectList(ViewBag.lsttipoempleado, "idtab", "descripcion"), new { @class = "form-control", @id = "cboemple" })
 							</div>
 							<div class="form-group">
-								<label for="txtNombres">PRIMER NOMBRE</label>
+								<label for="txtNombres">NOMBRES</label>
 							</div>
 							<div class="form-group">
-								@Html.TextBoxFor(m => (m.primerNombre), new { @class = "form-control" })
-							</div>
-							<div class="form-group">
-								<label for="txtNombres">SEGUNDO NOMBRE</label>
-							</div>
-							<div class="form-group">
-								@Html.TextBoxFor(m => (m.segundoNombre), new { @class = "form-control" })
+								@Html.TextBoxFor(m => (m.nombres), new { @class = "form-control" })
 							</div>
 							<div class="form-group">
 								<label for="txtNroDocumento">DOCUMENTO DE IDENTIDAD</label>
@@ -131,7 +125,7 @@
 		}
 	</div>
 </div>
-<script src="~/js/ActionsPersona.js"></script>
+<script src="~/Scripts/ActionsPersona.js"></script>
 @section Scripts {
-	@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+	@Scripts.Render("~/bundles/jqueryval")
 }

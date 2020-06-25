@@ -8,8 +8,14 @@ namespace His.DTO
     {
         #region Persona
         public int? idPersona { get; set; }
+
+        [Required(ErrorMessage = "Ingrese apellido paterno")]
         public string apellidoPaterno { get; set; }
+
+        [Required(ErrorMessage = "Ingrese apellido materno")]
         public string apellidoMaterno { get; set; }
+
+        [Required(ErrorMessage = "Ingrese el nombre")]
         public string nombres { get; set; }
         public int? ruc { get; set; }
         public int? edad { get; set; }
@@ -38,6 +44,7 @@ namespace His.DTO
 
         [DataType(DataType.EmailAddress)]
         [RegularExpression(@"^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$", ErrorMessage = "Correo no valido")]
+        [Required(ErrorMessage = "Ingrese el correo")]
         public string correo { get; set; }
         public string domiFiscal { get; set; }
         public string estado { get; set; }

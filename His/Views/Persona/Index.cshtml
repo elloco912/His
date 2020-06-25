@@ -66,11 +66,11 @@
 						</tr>
 					</thead>
 					<tbody>
-						@* 	@foreach (var item in Model)
+						 	@foreach (var item in Model)
 		{
 			<tr>
 				<td>@item.idPersona</td>
-				<td>@item.primerNombre</td>
+				<td>@item.nombres</td>
 				<td>@item.apellidoPaterno</td>
 				<td>@item.personal.fechaIngreso</td>
 				<td>@item.telefono</td>
@@ -81,7 +81,7 @@
 					<button title="Eliminar" type="submit" class="delete btn btn-danger"><i class="fas fa-minus"></i></button>
 				</td>
 			</tr>
-		} *@
+		} 
 					</tbody>
 				</table>
 			</div>
@@ -120,5 +120,5 @@
 <div class="modal fade" id="modaldeletepersona" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 
 </div>
-<script src="~/js/cargavistaparcial.js"></script>
 
+<script src="~/Scripts/cargavistaparcial.js"></script>
