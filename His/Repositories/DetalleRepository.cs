@@ -44,6 +44,17 @@ namespace His.Repositories
             }
             return detalle;
         }
+        public List<D00_TBDETALLE> listarxDetallexNombreGeneral(string nombres)
+        {
+            List<D00_TBDETALLE> detalles = new List<D00_TBDETALLE>();
+
+            DataSet objects = UtilRepository.getDataByName("usp_ListartbDetallexNombretbGeneral", nombres);
+            foreach (DataRow dr in objects.Tables["Objects"].Rows)
+            {
+                detalles.Add(GetDetalle(dr));
+            }
+            return detalles;
+        }
         public D00_TBDETALLE listarxIdDetalle(int id)
         {
             D00_TBDETALLE detalle = new D00_TBDETALLE();
