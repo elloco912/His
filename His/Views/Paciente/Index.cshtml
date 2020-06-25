@@ -31,7 +31,7 @@
 						</div>
 						<div class="col-sm-5">
 							<button class="btn btn-info" type="submit" id="btnBuscar"><i class="fas fa-search"></i></button>
-							<a class="btn btn-primary" type="submit" asp-action="Create" asp-controller="Paciente"><i class="fas fa-user-plus"></i></a>
+							<a class="btn btn-primary" type="submit" href="@Url.Action("Create","Paciente")"><i class="fas fa-user-plus"></i></a>
 							<button class="btn btn-secondary" type="submit" onclick="return getbyID();"><i class="fas fa-edit"></i></button>
 						</div>
 					</div>
