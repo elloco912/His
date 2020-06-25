@@ -124,13 +124,13 @@ namespace His.Repositories
         public List<PersonaDTO> listarPersonas()
         {
             List<PersonaDTO> personas = new List<PersonaDTO>();
-            T000_PERSONA persona = new T000_PERSONA();
-            T120_EMPLEADO empleado = new T120_EMPLEADO();
             PersonalDTO personal = new PersonalDTO();
             DataSet objects = UtilRepository.getAllData("usp_ListarPersona");
             foreach (DataRow dr in objects.Tables["Objects"].Rows)
             {
-                persona = (T000_PERSONA)GetPersona(dr,1);
+                T000_PERSONA persona = new T000_PERSONA();
+                persona = GetPersona(dr, 1);
+                T120_EMPLEADO empleado = new T120_EMPLEADO();
                 empleado = EmpleadoRepository.ListarEmpleadoxIdPersona(persona.idPersona);
                 if (empleado.idEmpleado != 0)
                 {
@@ -159,7 +159,7 @@ namespace His.Repositories
             DataSet objects = UtilRepository.getDataById("usp_ListarxIdPersona", (int)id);
             foreach (DataRow dr in objects.Tables["Objects"].Rows)
             {
-                persona = (T000_PERSONA)GetPersona(dr,1);
+                persona = GetPersona(dr,1);
                 personal = new PersonalDTO()
                 {
                     idEmpleado = int.Parse(UtilRepository.GetData(dr,"idEmpleado")),
@@ -217,12 +217,12 @@ namespace His.Repositories
         }
         public string insertarPersona(PersonaDTO persona)
         {
-            T000_PERSONA Persona = (T000_PERSONA)GetPersona(persona, 2);
+            T000_PERSONA Persona = GetPersona(persona, 2);
             return UtilRepository.insertaActualiza("usp_InsertarPersona", Persona, 1);
         }
         public string actualizarPersona(PersonaDTO persona)
         {
-            T000_PERSONA Persona = (T000_PERSONA)GetPersona(persona, 2);
+            T000_PERSONA Persona = GetPersona(persona, 2);
             return UtilRepository.insertaActualiza("usp_ActualizarPersona", Persona, 2);
         }
     }
