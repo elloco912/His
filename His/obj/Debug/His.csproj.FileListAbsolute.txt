@@ -336,7 +336,6 @@ F:\CEM\His\bin\es\System.Web.Razor.resources.dll
 F:\CEM\His\bin\es\System.Web.WebPages.resources.dll
 F:\CEM\His\bin\es\System.Web.WebPages.Deployment.resources.dll
 F:\CEM\His\bin\es\System.Web.WebPages.Razor.resources.dll
-F:\CEM\His\obj\Debug\His.csprojAssemblyReference.cache
 F:\CEM\His\obj\Debug\His.csproj.CoreCompileInputs.cache
 F:\CEM\His\obj\Debug\His.csproj.CopyComplete
 F:\CEM\His\obj\Debug\His.dll
