@@ -22,7 +22,7 @@ namespace HistClinica.Repositories.Repositories
                 idtpDocumento=  Convert.ToInt32(dr["idtpDocumento"].ToString()),
                 dniPersona=     Convert.ToInt32(dr["dniPersona"].ToString()),
                 idSexo=         Convert.ToInt32(dr["idSexo"].ToString()),
-                fecNacimiento=  dr["fecNacimiento"].ToString(),
+                fecNace=        dr["fecNace"].ToString(),
                 idEstCivil=     Convert.ToInt32(dr["idEstCivil"].ToString()),
                 idOcupacion=    Convert.ToInt32(dr["idOcupacion"].ToString()),
                 domiFiscal=     dr["domiFiscal"].ToString(),
