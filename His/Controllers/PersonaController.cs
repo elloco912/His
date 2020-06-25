@@ -15,6 +15,7 @@ namespace His.Controllers
         private EmpleadoRepository _empleadorepository = new EmpleadoRepository();
         private CajaRepository _cajaRepository = new CajaRepository();
         private UsuarioRepository _usuarioRepository = new UsuarioRepository();
+        private DetalleRepository _detalleRepository = new DetalleRepository();
 
         // GET: Persona
         public async Task<ActionResult> Index()
@@ -46,12 +47,12 @@ namespace His.Controllers
         // GET: Persona/Create
         public async Task<ActionResult> Create()
         {
-            //var lespecialidads = await _utilrepository.GetTipo("Especialidad");
-            //ViewBag.listaespecialidades = lespecialidads;
+            var lespecialidads =  _detalleRepository.listarxDetallexNombreGeneral("Especialidad");
+            ViewBag.listaespecialidades = lespecialidads;
 
             //combo tipo de empleado
-            //var tipoEmpleados = await _utilrepository.GetTipo("Tipo Empleado");
-            //ViewBag.lsttipoempleado = tipoEmpleados;
+            var tipoEmpleados = _detalleRepository.listarxDetallexNombreGeneral("Tipo Empleado");
+            ViewBag.lsttipoempleado = tipoEmpleados;
             return View();
         }
 
@@ -76,12 +77,12 @@ namespace His.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         public async Task<ActionResult> Editar(int? idpersona)
         {
-            //var lespecialidads = await _utilrepository.GetTipo("Especialidad");
-            //ViewBag.listaespecialidades = lespecialidads;
+            var lespecialidads = _detalleRepository.listarxDetallexNombreGeneral("Especialidad");
+            ViewBag.listaespecialidades = lespecialidads;
 
             //combo tipo de empleado
-            //var tipoEmpleados = await _utilrepository.GetTipo("Tipo Empleado");
-            //ViewBag.lsttipoempleado = tipoEmpleados;
+            var tipoEmpleados = _detalleRepository.listarxDetallexNombreGeneral("Tipo Empleado");
+            ViewBag.lsttipoempleado = tipoEmpleados;
 
             PersonaDTO persona = _personaRepository.listarxIdPersona((int)idpersona);
             return PartialView("Edit", persona);
@@ -143,8 +144,9 @@ namespace His.Controllers
 
         public async Task<ActionResult> Asignar(int? id)
         {
-            //var tipoEmpleados = await _utilrepository.GetTipo("Tipo Empleado");
-            //ViewBag.lsttipoempleado = tipoEmpleados;
+            //combo tipo de empleado
+            var tipoEmpleados = _detalleRepository.listarxDetallexNombreGeneral("Tipo Empleado");
+            ViewBag.lsttipoempleado = tipoEmpleados;
 
             //List<D024_CAJA> cajas = await _utilrepository.getCajas();
             //ViewBag.lscaja = cajas;

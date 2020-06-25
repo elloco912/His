@@ -10,9 +10,9 @@ namespace His.Controllers
 {
     public class PacienteController : Controller
     {
-        private readonly PersonaRepository _personaRepository;
-        private readonly PacienteRepository _pacienteRepository;
-        private readonly UtilRepository _utilrepository;
+        private PersonaRepository _personaRepository = new PersonaRepository();
+        private PacienteRepository _pacienteRepository = new PacienteRepository();
+        private DetalleRepository _detalleRepository = new DetalleRepository();
 
 
         public async Task<ActionResult> Index()
@@ -61,45 +61,45 @@ namespace His.Controllers
         // GET: Paciente/Create
         public async Task<ActionResult> Create()
         {
-            //var lsttipsexo = new Object();
-            //lsttipsexo = await _utilrepository.GetTipo("sexo");
-            //ViewBag.lssexo = lsttipsexo;
+            var lsttipsexo = new Object();
+            lsttipsexo = _detalleRepository.listarxDetallexNombreGeneral("sexo");
+            ViewBag.lssexo = lsttipsexo;
 
-            //var lsgrdinstruccion = new Object();
-            //lsgrdinstruccion = await _utilrepository.GetTipo("grado instruccion");
-            //ViewBag.lgrdinst = lsgrdinstruccion;
+            var lsgrdinstruccion = new Object();
+            lsgrdinstruccion = _detalleRepository.listarxDetallexNombreGeneral("grado instruccion");
+            ViewBag.lgrdinst = lsgrdinstruccion;
 
-            //var ocupacion = new Object();
-            //ocupacion = await _utilrepository.GetTipo("Ocupacion");
-            //ViewBag.locupacion = ocupacion;
+            var ocupacion = new Object();
+            ocupacion = _detalleRepository.listarxDetallexNombreGeneral("Ocupacion");
+            ViewBag.locupacion = ocupacion;
 
-            //var gruposangre = new Object();
-            //gruposangre = await _utilrepository.GetTipo("Grupo Sangre");
-            //ViewBag.lgpsangre = gruposangre;
+            var gruposangre = new Object();
+            gruposangre = _detalleRepository.listarxDetallexNombreGeneral("Grupo Sangre");
+            ViewBag.lgpsangre = gruposangre;
 
-            //var factrh = new Object();
-            //factrh = await _utilrepository.GetTipo("Factor RH");
-            //ViewBag.lfh = factrh;
+            var factrh = new Object();
+            factrh = _detalleRepository.listarxDetallexNombreGeneral("Factor RH");
+            ViewBag.lfh = factrh;
 
-            //var parentesco = new Object();
-            //parentesco = await _utilrepository.GetTipo("Parentesco");
-            //ViewBag.lparentesco = parentesco;
+            var parentesco = new Object();
+            parentesco = _detalleRepository.listarxDetallexNombreGeneral("Parentesco");
+            ViewBag.lparentesco = parentesco;
 
-            //var tipovia = new Object();
-            //tipovia = await _utilrepository.GetTipo("Tipo Via");
-            //ViewBag.ltipovia = tipovia;
+            var tipovia = new Object();
+            tipovia = _detalleRepository.listarxDetallexNombreGeneral("Tipo Via");
+            ViewBag.ltipovia = tipovia;
 
-            //var tippac = new Object();
-            //tippac = await _utilrepository.GetTipo("Tipo Paciente");
-            //ViewBag.ltippac = tippac;
+            var tippac = new Object();
+            tippac = _detalleRepository.listarxDetallexNombreGeneral("Tipo Paciente");
+            ViewBag.ltippac = tippac;
 
-            //var estadocivil = new Object();
-            //estadocivil = await _utilrepository.GetTipo("Estado Civil");
-            //ViewBag.lestcivil = estadocivil;
+            var estadocivil = new Object();
+            estadocivil = _detalleRepository.listarxDetallexNombreGeneral("Estado Civil");
+            ViewBag.lestcivil = estadocivil;
 
-            //var tipdoc = new Object();
-            //tipdoc = await _utilrepository.GetTipo("Tipo Documento");
-            //ViewBag.ltipdoc = tipdoc;
+            var tipdoc = new Object();
+            tipdoc = _detalleRepository.listarxDetallexNombreGeneral("Tipo Documento");
+            ViewBag.ltipdoc = tipdoc;
 
             return View();
         }
