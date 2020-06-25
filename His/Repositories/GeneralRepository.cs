@@ -16,10 +16,10 @@ namespace His.Repositories
             {
                 idTab = int.Parse(dr["idTab"].ToString()),
                 descripcion = dr["descripcion"].ToString(),
-                codTab = dr["descripcion"].ToString(),
-                fechaCreate = DateTime.Parse(dr["descripcion"].ToString()),
-                tipo = dr["descripcion"].ToString(),
-                usuCreate = dr["descripcion"].ToString()
+                codTab = dr["codTab"].ToString(),
+                fechaCreate = DateTime.Parse(dr["fechaCreate"].ToString()),
+                tipo = dr["tipo"].ToString(),
+                usuCreate = dr["usuCreate"].ToString()
             };
         }
         public List<D00_TBGENERAL> listarDetalles()
@@ -43,7 +43,7 @@ namespace His.Repositories
             }
             return detalle;
         }
-        public D00_TBGENERAL listarxIdDetalle(int id)
+        public D00_TBGENERAL listarxIdDetalle(int? id)
         {
             D00_TBGENERAL detalle = new D00_TBGENERAL();
 

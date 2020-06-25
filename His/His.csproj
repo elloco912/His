@@ -254,11 +254,11 @@
     <Content Include="Views\Persona\Index.cshtml" />
     <Content Include="Views\Home\Menu.cshtml" />
     <Content Include="Views\Tablas\Actualizar.cshtml" />
-    <Content Include="Views\Tablas\Agregar.cshtml" />
-    <Content Include="Views\Tablas\AgregarInformacion.cshtml" />
-    <Content Include="Views\Tablas\Editar.cshtml" />
-    <Content Include="Views\Tablas\EditarInformacion.cshtml" />
+    <Content Include="Views\Tablas\AgregarDetalle.cshtml" />
+    <Content Include="Views\Tablas\EditarDetalle.cshtml" />
     <Content Include="Views\Tablas\Index.cshtml" />
+    <Content Include="Views\Tablas\EditarTipo.cshtml" />
+    <Content Include="Views\Tablas\AgregarTipo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

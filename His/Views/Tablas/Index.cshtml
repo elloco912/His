@@ -1,33 +1,33 @@
-﻿
+﻿@model List<His.Models.D00_TBGENERAL>
 @{
-    ViewData["Title"] = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+	ViewData["Title"] = "Index";
+	Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-	<div class="container">
-		<div class="col-sm-12">
-			<h1 align="center">Gestion de Tipos</h1>
-		</div>
-		<div class="col-sm-12">
-			<div class="row">
-				<div class="col-sm-6 form-inline">
-					<label> Ingresar Codigo:</label>
-					<input type="text" id="nombre" class="form form-control" name="coddetTab" />
-					<input type="submit" value="Buscar" class="btn btn-primary" />
-				</div>
-				<div class="col-sm-6">
+<div class="container">
+	<div class="col-sm-12 pb-5">
+		<h1 align="center">Gestion de Tipos</h1>
+	</div>
+	<div class="col-sm-12">
+		<div class="row">
+			<div class="col-sm-6 form-inline">
+				<label> Ingresar Codigo:</label>
+				<input type="text" id="nombre" class="form form-control" name="coddetTab" />
+				<input type="submit" value="Buscar" class="btn btn-primary" />
+			</div>
+			<div class="col-sm-6">
 
-                </div>
 			</div>
 		</div>
-    </div>
+	</div>
+</div>
 
 <div class="container">
 	<div class="col-sm-12 text-right pt-4">
-		<a type="button" class="btn btn-primary" href="@Url.Action("Agregar")">Crear</a><br /><br />
+		<a type="submit" style="color:white;" class="btn btn-primary" onclick="cargarmodalCrearTipo();">Crear</a><br /><br />
 	</div>
 	<div class="col-sm-12">
-		<table class="table table-bordered table-hover">
+		<table class="table table-bordered table-hover" id="generalgrid">
 			<thead>
 				<tr>
 					<th>
@@ -42,17 +42,30 @@
 				</tr>
 			</thead>
 			<tbody class="tbody">
-				<tr>
-					<th scope="row">TIP001</th>
-					<td>MASCULINO</td>
-					<td>
-						<button class="btn btn-danger">Eliminar</button>
-						<a class="fa fa-edit btn btn-primary" aria-hidden="true">
-						</a>
-					</td>
-				</tr>
+				@foreach (var item in Model)
+				{
+					<tr>
+						<td>@item.codTab</td>
+						<td>@item.descripcion</td>
+						<td>
+							<a type="submit" style="color:white;" class="edit btn btn-primary" aria-hidden="true">
+								<i class="fas fa-edit"></i>
+							</a>
+							<a type="submit" href="@Url.Action("Actualizar","Tablas")" class="btn btn-primary" aria-hidden="true">
+								<i class="fas fa-search"></i>
+							</a>
+							<a type="submit" href="" class="btn btn-danger" aria-hidden="true">
+								<i class="fas fa-minus"></i>
+							</a>
+						</td>
+					</tr>
+				}
 			</tbody>
 		</table>
 	</div>
 </div>
-
+<div class="modal fade" id="modalagregartipo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+</div>
+<div class="modal fade" id="modaleditartipo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+</div>
+<script src="~/Scripts/cargavistaparcial.js"></script>

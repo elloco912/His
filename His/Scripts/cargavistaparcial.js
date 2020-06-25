@@ -151,6 +151,27 @@
 				}
 			});
 		});
+
+	$("#generalgrid .edit").click(function () {
+		var id = $(this).closest("tr").find("td").eq(0).html();
+		$.ajax({
+			type: "GET",
+			url: "/Tablas/EditarTipo",
+			data: { id: id },
+			contentType: "application/json; charset=utf-8",
+			dataType: "html",
+			success: function (response) {
+				$('#modaleditartipo').html(response);
+				$('#modaleditartipo').modal('show');
+			},
+			failure: function (response) {
+				alert(response.responseText);
+			},
+			error: function (response) {
+				alert(response.responseText);
+			}
+		});
+	});
 });
 
 $(document).on('change', '#idmedico', function (event) {
@@ -160,6 +181,25 @@ $(document).on('change', '#idmedico', function (event) {
 
 });
 
+
+function cargarmodalCrearTipo() {
+	$.ajax({
+		type: "GET",
+		url: "/Tablas/AgregarTipo",
+		contentType: "application/json; charset=utf-8",
+		dataType: "html",
+		success: function (response) {
+			$('#modalagregartipo').html(response);
+			$('#modalagregartipo').modal('show');
+		},
+		failure: function (response) {
+			alert(response.responseText);
+		},
+		error: function (response) {
+			alert(response.responseText);
+		}
+	});
+}
 
 function CargaConsultaCronograma() {
 		$.ajax({
