@@ -9,42 +9,42 @@ namespace His.DTO
         #region Persona
         public int? idPersona { get; set; }
 
-        [Required(ErrorMessage = "Ingrese apellido paterno")]
+        //[Required(ErrorMessage = "Ingrese apellido paterno")]
         public string apellidoPaterno { get; set; }
 
-        [Required(ErrorMessage = "Ingrese apellido materno")]
+        //[Required(ErrorMessage = "Ingrese apellido materno")]
         public string apellidoMaterno { get; set; }
 
-        [Required(ErrorMessage = "Ingrese el nombre")]
+        //[Required(ErrorMessage = "Ingrese el nombre")]
         public string nombres { get; set; }
         public int? ruc { get; set; }
         public int? edad { get; set; }
 
-        [MaxLength(9)]
-        [Required(ErrorMessage = "Ingrese numero de telefono")]
+        //[MaxLength(9)]
+        //[Required(ErrorMessage = "Ingrese numero de telefono")]
         public string telefono { get; set; }
         public int? idSexo { get; set; }
         public int? idGradoInstruccion { get; set; }
         public int? idEstadoCivil { get; set; }
 
-        [DataType(DataType.EmailAddress)]
-        [RegularExpression(@"^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$", ErrorMessage = "Correo no valido")]
+        //[DataType(DataType.EmailAddress)]
+        //[RegularExpression(@"^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$", ErrorMessage = "Correo no valido")]
         public string Email { get; set; }
 
-        [MaxLength(9)]
-        [Required(ErrorMessage = "Ingrese numero de celular")]
+        //[MaxLength(9)]
+        //[Required(ErrorMessage = "Ingrese numero de celular")]
         public string celular { get; set; }
         public int? idTipoDocumento { get; set; }
 
-        [MaxLength(8)]
-        [Required(ErrorMessage = "Ingrese numero de documento")]
+        //[MaxLength(8)]
+        //[Required(ErrorMessage = "Ingrese numero de documento")]
         public int? numeroDocumento { get; set; }
         public string centroEduca { get; set; }
         public string condicionRuc { get; set; }
 
-        [DataType(DataType.EmailAddress)]
-        [RegularExpression(@"^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$", ErrorMessage = "Correo no valido")]
-        [Required(ErrorMessage = "Ingrese el correo")]
+        //[DataType(DataType.EmailAddress)]
+        //[RegularExpression(@"^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$", ErrorMessage = "Correo no valido")]
+        //[Required(ErrorMessage = "Ingrese el correo")]
         public string correo { get; set; }
         public string domiFiscal { get; set; }
         public string estado { get; set; }

@@ -158,7 +158,8 @@ namespace His.Repositories
 				foreach (FieldInfo F
 				in Datos.GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance)) // Aqui ocurre la magia :)
 				{
-					cm.Parameters.AddWithValue("@"+F.Name, F.Name);
+					if((F.Name == "idPersona" || F.Name == "idEmpleado" || F.Name == "idUsuario" || F.Name == "idTab" || F.Name == "idDet") && tipo == 2)cm.Parameters.AddWithValue("@"+F.Name, F.Name);
+					else cm.Parameters.AddWithValue("@"+F.Name, F.Name);
 				}
 				cm.CommandType = CommandType.StoredProcedure;
 				cm.ExecuteNonQuery();
