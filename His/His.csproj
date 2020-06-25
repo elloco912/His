@@ -173,6 +173,7 @@
     <Compile Include="Repositories\CronogramaRepository.cs" />
     <Compile Include="Repositories\DetalleRepository.cs" />
     <Compile Include="Repositories\EmpleadoRepository.cs" />
+    <Compile Include="Repositories\GeneralRepository.cs" />
     <Compile Include="Repositories\MedicoRepository.cs" />
     <Compile Include="Repositories\PacienteRepository.cs" />
     <Compile Include="Repositories\PersonaRepository.cs" />

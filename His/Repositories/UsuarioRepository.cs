@@ -34,7 +34,7 @@ namespace His.Repositories
         public List<D001_USUARIO> listarUsuarios()
         {
             List<D001_USUARIO> usuarios = new List<D001_USUARIO>();
-            DataSet objects = UtilRepository.getAllData("usp_listarUsuario");
+            DataSet objects = UtilRepository.getAllData("usp_ListarUsuario");
             foreach (DataRow dr in objects.Tables["Objects"].Rows)
             {
                 usuarios.Add(Getusuario(dr));
@@ -46,7 +46,7 @@ namespace His.Repositories
         {
             D001_USUARIO usuario = new D001_USUARIO();
 
-            DataSet objects = UtilRepository.getDataById("usp_listarxIdUsuario", id);
+            DataSet objects = UtilRepository.getDataById("usp_ListarxIdUsuario", id);
             foreach (DataRow dr in objects.Tables["Objects"].Rows)
             {
                 usuario = Getusuario(dr);
@@ -56,7 +56,7 @@ namespace His.Repositories
 
         public ValidacionLogueo logueo(string user, string clave)
         {
-            return UtilRepository.logueo("usp_listarxNombreUsuario", user, clave);
+            return UtilRepository.logueo("usp_ListarxNombreUsuario", user, clave);
         }
 
         public string eliminarUsuario(int id)
@@ -66,7 +66,7 @@ namespace His.Repositories
 
         public string insertarUsuario(PersonaDTO persona)
         {
-            persona = PersonaRepository.listarxIdPersona(persona.idPersona);
+            persona = PersonaRepository.listarxIdPersona((int)persona.idPersona);
             D001_USUARIO usuario = new D001_USUARIO()
             {
                 idEmpleado = persona.personal.idEmpleado,

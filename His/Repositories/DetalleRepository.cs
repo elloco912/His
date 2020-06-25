@@ -10,80 +10,64 @@ namespace His.Repositories
     public class DetalleRepository
     {
         public UtilRepository UtilRepository = new UtilRepository();
-        //private bool disposed = false;
-        //protected virtual void Dispose(bool disposing)
-        //{
-        //    if (!this.disposed)
-        //    {
-        //        if (disposing)
-        //        {
-        //            _context.Dispose();
-        //        }
-        //    }
-        //    this.disposed = true;
-        //}
-        //public void Dispose()
-        //{
-        //    Dispose(true);
-        //    GC.SuppressFinalize(this);
-        //}
-        //public async Task Save()
-        //{
-        //    await _context.SaveChangesAsync();
-        //}
-
-        //public async Task<bool> DetalleExists(int? id)
-        //{
-        //    return await _context.D00_TBDETALLE.AnyAsync(e => e.idDet == id);
-        //}
-
-        public List<D00_TBDETALLE> GetAllDetalles(string filtro)
+        public static D00_TBDETALLE GetDetalle(DataRow dr)
         {
-            D00_TBDETALLE detalle;
-            List<D00_TBDETALLE> detalles = new List<D00_TBDETALLE>();            
-            if (filtro == "")
+            return _ = new D00_TBDETALLE
             {
-                DataSet objects = UtilRepository.getAllData("");
-                foreach (DataRow dr in objects.Tables["Objects"].Rows)
-                {
-                    detalle = new D00_TBDETALLE
-                    {
-                        idDet = Convert.ToInt32(dr["idDet"]),
-                        abrev = dr["abrev"].ToString(),
-                        coddetTab = dr["coddetTab"].ToString(),
-                        descripcion = dr["abrev"].ToString(),
-                        estado = dr["estado"].ToString(),
-                        fuente = dr["fuente"].ToString(),
-                        idTab = Convert.ToInt32(dr["idTab"])
-                    };
-                    detalles.Add(detalle);
-                }
-            }
-            else
+                idDet = int.Parse(dr["idDet"].ToString()),
+                abrev = dr["abrev"].ToString(),
+                coddetTab = dr["coddetTab"].ToString(),
+                descripcion = dr["descripcion"].ToString(),
+                estado = dr["estado"].ToString(),
+                fuente = dr["fuente"].ToString(),
+                idTab = int.Parse(dr["idTab"].ToString())
+            };
+        }
+        public List<D00_TBDETALLE> listarDetalles()
+        {
+            List<D00_TBDETALLE> detalles = new List<D00_TBDETALLE>();
+            DataSet objects = UtilRepository.getAllData("usp_ListartbDetalle");
+            foreach (DataRow dr in objects.Tables["Objects"].Rows)
             {
-                    
+                detalles.Add(GetDetalle(dr));
             }
             return detalles;
         }
-
-        public D00_TBDETALLE GetDetalle(int? id)
+        public D00_TBDETALLE listarxNombre(string nombres)
         {
-            D00_TBDETALLE detalle=new D00_TBDETALLE();
-            DataSet objects = UtilRepository.getAllData("");
+            D00_TBDETALLE detalle = new D00_TBDETALLE();
+
+            DataSet objects = UtilRepository.getDataByName("usp_ListarxNombretbDetalle", nombres);
             foreach (DataRow dr in objects.Tables["Objects"].Rows)
             {
-                detalle = new D00_TBDETALLE
-                {
-                    idDet = Convert.ToInt32(dr["idDet"]),
-                    abrev = dr["abrev"].ToString(),
-                    coddetTab = dr["coddetTab"].ToString(),
-                    descripcion = dr["abrev"].ToString(),
-                    estado = dr["estado"].ToString(),
-                    fuente = dr["fuente"].ToString(),
-                    idTab = Convert.ToInt32(dr["idTab"])
-                };
+                detalle = GetDetalle(dr);
             }
             return detalle;
+        }
+        public D00_TBDETALLE listarxIdDetalle(int id)
+        {
+            D00_TBDETALLE detalle = new D00_TBDETALLE();
+
+            DataSet objects = UtilRepository.getDataById("usp_ListarxIdtbDetalle", (int)id);
+            foreach (DataRow dr in objects.Tables["Objects"].Rows)
+            {
+                detalle = GetDetalle(dr);
+            }
+
+
+            return detalle;
+        }
+        public string eliminarDetalle(int id)
+        {
+            return UtilRepository.deleteById("usp_EliminartbDetalle", id);
+        }
+        public string insertarDetalle(D00_TBDETALLE empleado)
+        {
+            return UtilRepository.insertaActualiza("usp_InsertartbDetalle", empleado, 1);
+        }
+        public string actualizarDetalle(D00_TBDETALLE empleado)
+        {
+            return UtilRepository.insertaActualiza("usp_ActualizartbDetalle", empleado, 2);
         }
     }
 }

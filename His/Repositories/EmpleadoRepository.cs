@@ -38,14 +38,24 @@ namespace His.Repositories
             }
             return empleados;
         }
+        public T120_EMPLEADO listarxNombre(string nombres)
+        {
+            T120_EMPLEADO empleado = new T120_EMPLEADO();
 
+            DataSet objects = UtilRepository.getDataByName("usp_ListarxNombreEmpleado", nombres);
+            foreach (DataRow dr in objects.Tables["Objects"].Rows)
+            {
+                empleado = GetEmpleado(dr);
+            }
+            return empleado;
+        }
         //ToDO: Terminar esto
-        public PersonaDTO listarxIdEmpleado(int? id)
+        public PersonaDTO listarxIdEmpleado(int id)
         {
             PersonaDTO Persona = new PersonaDTO();
             T120_EMPLEADO empleado = new T120_EMPLEADO();
 
-            DataSet objects = UtilRepository.getDataById("usp_listarxIdEmpleado", (int)id);
+            DataSet objects = UtilRepository.getDataById("usp_ListarxIdEmpleado", (int)id);
             foreach (DataRow dr in objects.Tables["Objects"].Rows)
             {
                 empleado = GetEmpleado(dr);
@@ -65,17 +75,14 @@ namespace His.Repositories
 
             return Persona;
         }
-
         public string eliminarEmpleado(int id)
         {
             return UtilRepository.deleteById("usp_EliminarEmpleado", id);
         }
-
         public string insertarEmpleado(T120_EMPLEADO empleado)
         {
             return UtilRepository.insertaActualiza("usp_InsertarEmpleado", empleado, 1);
         }
-
         public string actualizarEmpleado(T120_EMPLEADO empleado)
         {
             return UtilRepository.insertaActualiza("usp_ActualizarEmpleado", empleado, 2);

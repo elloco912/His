@@ -75,13 +75,12 @@ namespace His.Repositories
             }
             return personas;
         }
-
-        public PersonaDTO listarxIdPersona(int? id)
+        public PersonaDTO listarxIdPersona(int id)
         {
             PersonalDTO personal = new PersonalDTO();
             T000_PERSONA persona = new T000_PERSONA();
 
-            DataSet objects = UtilRepository.getDataById("usp_listarxIdPersona", (int)id);
+            DataSet objects = UtilRepository.getDataById("usp_ListarxIdPersona", (int)id);
             foreach (DataRow dr in objects.Tables["Objects"].Rows)
             {
                 persona = GetPersona(dr);
@@ -115,17 +114,36 @@ namespace His.Repositories
 
             return Persona;
         }
+        public T000_PERSONA listarxDni(int dni)
+        {
+            T000_PERSONA persona = new T000_PERSONA();
 
+            DataSet objects = UtilRepository.getDataByDni("usp_BuscarDniPersona", dni);
+            foreach (DataRow dr in objects.Tables["Objects"].Rows)
+            {
+                persona = GetPersona(dr);
+            }
+            return persona;
+        }
+        public T000_PERSONA listarxNombre(string nombres)
+        {
+            T000_PERSONA persona = new T000_PERSONA();
+
+            DataSet objects = UtilRepository.getDataByName("usp_ListarxNombrePersona", nombres);
+            foreach (DataRow dr in objects.Tables["Objects"].Rows)
+            {
+                persona = GetPersona(dr);
+            }
+            return persona;
+        }
         public string eliminarPersona(int? id)
         {
             return UtilRepository.deleteById("usp_EliminarPersona", (int)id);
         }
-
         public string insertarPersona(PersonaDTO persona)
         {
             return UtilRepository.insertaActualiza("usp_InsertarPersona", persona, 1);
         }
-
         public string actualizarPersona(PersonaDTO persona)
         {
             return UtilRepository.insertaActualiza("usp_ActualizarPersona", persona, 2);

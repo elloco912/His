@@ -34,7 +34,7 @@ namespace His.Controllers
                 return HttpNotFound();
             }
 
-            var persona = _personaRepository.listarxIdPersona(id);
+            var persona = _personaRepository.listarxIdPersona((int)id);
             if (persona == null)
             {
                 return HttpNotFound();
@@ -83,7 +83,7 @@ namespace His.Controllers
             //var tipoEmpleados = await _utilrepository.GetTipo("Tipo Empleado");
             //ViewBag.lsttipoempleado = tipoEmpleados;
 
-            PersonaDTO persona = _personaRepository.listarxIdPersona(idpersona);
+            PersonaDTO persona = _personaRepository.listarxIdPersona((int)idpersona);
             return PartialView("Edit", persona);
         }
 
@@ -100,7 +100,7 @@ namespace His.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (_personaRepository.listarxIdPersona(personaDTO.idPersona) != null)
+                    if (_personaRepository.listarxIdPersona((int)personaDTO.idPersona) != null)
                     {
                         return HttpNotFound();
                     }
@@ -136,7 +136,7 @@ namespace His.Controllers
         // [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(PersonaDTO personadto)
         {
-            var persona =_personaRepository.listarxIdPersona(personadto.idPersona);
+            var persona =_personaRepository.listarxIdPersona((int)personadto.idPersona);
             _personaRepository.eliminarPersona(personadto.idPersona);
             return RedirectToAction(nameof(Index));
         }
@@ -149,7 +149,7 @@ namespace His.Controllers
             //List<D024_CAJA> cajas = await _utilrepository.getCajas();
             //ViewBag.lscaja = cajas;
 
-            PersonaDTO persona = _empleadorepository.listarxIdEmpleado(id);
+            PersonaDTO persona = _empleadorepository.listarxIdEmpleado((int)id);
             return PartialView(persona);
         }
 

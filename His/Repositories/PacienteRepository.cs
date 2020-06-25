@@ -83,7 +83,7 @@ namespace His.Repositories
         {
             T001_PACIENTE paciente = new T001_PACIENTE();
 
-            DataSet objects = UtilRepository.getDataById("usp_listarxIdPaciente", id);
+            DataSet objects = UtilRepository.getDataById("usp_ListarxIdPaciente", id);
             foreach (DataRow dr in objects.Tables["Objects"].Rows)
             {
                 paciente = GetPaciente(dr);
@@ -96,6 +96,18 @@ namespace His.Repositories
             T001_PACIENTE paciente = new T001_PACIENTE();
 
             DataSet objects = UtilRepository.getDataByDni("usp_BuscarDniPaciente", dni);
+            foreach (DataRow dr in objects.Tables["Objects"].Rows)
+            {
+                paciente = GetPaciente(dr);
+            }
+            return paciente;
+        }
+
+        public T001_PACIENTE listarxNombre(string nombres)
+        {
+            T001_PACIENTE paciente = new T001_PACIENTE();
+
+            DataSet objects = UtilRepository.getDataByName("usp_ListarxNombrePaciente", nombres);
             foreach (DataRow dr in objects.Tables["Objects"].Rows)
             {
                 paciente = GetPaciente(dr);

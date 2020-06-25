@@ -13,13 +13,13 @@ namespace His.Controllers
         // GET: Detalle
         public ActionResult Index()
         {
-            return View(_detalleRepository.GetAllDetalles(""));
+            return View(_detalleRepository.listarDetalles());
         }
 
         // GET: Detalle/Details/5
         public ActionResult Details(int? id)
         {
-            return View(_detalleRepository.GetDetalle(id));
+            return View(_detalleRepository.listarxIdDetalle((int)id));
         }
 
         // GET: Detalle/Create

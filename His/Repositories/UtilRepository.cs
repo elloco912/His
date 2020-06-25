@@ -79,7 +79,6 @@ namespace His.Repositories
 				return new DataSet();
 			}
 		}
-
 		public DataSet getDataByDni(string query, int prmDni)
 		{
 			try
@@ -100,7 +99,6 @@ namespace His.Repositories
 				return new DataSet();
 			}
 		}
-
 		public string deleteById(string query, int id)
         {
 			try
