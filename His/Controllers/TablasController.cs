@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace His.Controllers
 {
-    public class DetalleController : Controller
+    public class TablasController : Controller
     {
         private readonly DetalleRepository _detalleRepository = new DetalleRepository();
         // GET: Detalle
