@@ -6,7 +6,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace HistClinica.Repositories.Repositories
+namespace His.Repositories
 {
     public class MedicoRepository 
     {
@@ -43,14 +43,24 @@ namespace HistClinica.Repositories.Repositories
         {
             T212_MEDICO Medico = new T212_MEDICO();
 
-            DataSet objects = UtilRepository.getDataById("usp_listarxIdmedico", id);
+            DataSet objects = UtilRepository.getDataById("usp_ListarxIdmedico", id);
             foreach (DataRow dr in objects.Tables["Objects"].Rows)
             {
                 Medico = GetMedico(dr);
             }
             return Medico;
         }
+        public T212_MEDICO listarxNombre(string nombres)
+        {
+            T212_MEDICO medico = new T212_MEDICO();
 
+            DataSet objects = UtilRepository.getDataByName("usp_ListarxNombreMedico", nombres);
+            foreach (DataRow dr in objects.Tables["Objects"].Rows)
+            {
+                medico = GetMedico(dr);
+            }
+            return medico;
+        }
         public string eliminarMedico(int id)
         {
             return UtilRepository.deleteById("usp_EliminarMedico", id);

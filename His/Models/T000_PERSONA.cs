@@ -12,7 +12,7 @@ namespace His.Models
 		public int? dniPersona { get; set; }
 		public int? idSexo { get; set; }
 		public int? idEtnico { get; set; }
-		public string fecNacimiento { get; set; }
+		public string fecNace { get; set; }
 		public int? idUbigeoResi { get; set; }
 		public int? idtipoVia { get; set; }
 		public string nombreVia { get; set; }

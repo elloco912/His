@@ -20,7 +20,7 @@ namespace His.Controllers
             //var user = "";
             if (user.valida)
             {
-                //  HttpContext.Session.SetString("nombreusuario", user.loginUser);
+                ViewBag.error = user.mensaje;
                 return RedirectToAction("Index", "Home");
             }
             ViewBag.error = user.mensaje;
