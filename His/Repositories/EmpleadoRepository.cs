@@ -20,7 +20,7 @@ namespace His.Repositories
                 codEmpleado = dr["codEmpleado"].ToString(),
                 descArea = dr["descArea"].ToString(),
                 cargo = dr["cargo"].ToString(),
-                fecIngreso = Convert.ToDateTime(dr["cargo"].ToString()),
+                fecIngreso = Convert.ToDateTime(dr["fecIngreso"].ToString()),
                 salario = Convert.ToInt32(dr["salario"].ToString()),
                 genero = dr["genero"].ToString(),
                 idtpEmpleado = Convert.ToInt32(dr["idtpEmpleado"]),
@@ -43,6 +43,17 @@ namespace His.Repositories
             T120_EMPLEADO empleado = new T120_EMPLEADO();
 
             DataSet objects = UtilRepository.getDataByName("usp_ListarxNombreEmpleado", nombres);
+            foreach (DataRow dr in objects.Tables["Objects"].Rows)
+            {
+                empleado = GetEmpleado(dr);
+            }
+            return empleado;
+        }
+        public T120_EMPLEADO ListarEmpleadoxIdPersona(int id)
+        {
+            T120_EMPLEADO empleado = new T120_EMPLEADO();
+
+            DataSet objects = UtilRepository.getDataById("usp_ListarEmpleadoxIdPersona", id);
             foreach (DataRow dr in objects.Tables["Objects"].Rows)
             {
                 empleado = GetEmpleado(dr);

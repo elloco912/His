@@ -23,7 +23,7 @@ namespace His.Repositories
                 loginUser = dr["loginUser"].ToString(),
                 claveUser = dr["claveUser"].ToString(),
                 idEmpleado = Convert.ToInt32(dr["idEmpleado"]),
-                estado = dr["estado"].ToString(),
+                estado = Convert.ToInt32(dr["estado"].ToString()),
                 //fechaCrea = dr["fechaCrea"].ToString(),
                 //fechaMod = dr["fechaMod"].ToString(),
                 //usuCrea = dr["usuCrea"].ToString(),
@@ -75,7 +75,7 @@ namespace His.Repositories
                 //claveUser = persona.asignacion.claveUser,
                 claveUser = persona.numeroDocumento.ToString(),
                 usuCrea = persona.asignacion.usuRegistra,
-                estado = "ACTIVO",
+                estado = 1,
                 usuMod = "",
                 fechaMod = ""
             };
