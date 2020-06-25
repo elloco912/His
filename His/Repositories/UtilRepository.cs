@@ -46,7 +46,7 @@ namespace His.Repositories
 				con.Open();
 				SqlCommand cm = new SqlCommand(query, con);
 				cm.CommandType = CommandType.StoredProcedure;
-				cm.Parameters.AddWithValue("@nombres", id);
+				cm.Parameters.AddWithValue("@Id", id);
 				SqlDataAdapter adapter = new SqlDataAdapter(cm);
 				DataSet objects = new DataSet();
 				adapter.Fill(objects, "Objects");

@@ -13,6 +13,7 @@ namespace His.Repositories
     public class PersonaRepository 
     {
         private static UtilRepository UtilRepository = new UtilRepository();
+        private static EmpleadoRepository EmpleadoRepository = new EmpleadoRepository();
         public static T000_PERSONA GetPersona(DataRow dr)
         {
             return _ = new T000_PERSONA
@@ -30,48 +31,68 @@ namespace His.Repositories
                 telefono=       dr["telefono"].ToString(),
                 celular=        dr["celular"].ToString(),
                 correo=         dr["correo"].ToString(),
-
-                //idPersona =     Convert.ToInt32(dr["idPersona"]),
-                //estado =        dr["estado"].ToString(),
-                //centroEduca=    dr["centroEduca"].ToString(),
-                //condicionRuc=   dr["condicionRuc"].ToString(),
-                //edad=           Convert.ToInt32(dr["edad"].ToString()),
-                //estadoRuc=      dr["estadoRuc"].ToString(),
-                //fotografia=     dr["fotografia"].ToString(),
-                //idciaSeguro=    Convert.ToInt32(dr["idciaSeguro"].ToString()),
-                //iddatoSiteds=   Convert.ToInt32(dr["iddatoSiteds"].ToString()),
-                //idemprConvenio= Convert.ToInt32(dr["idemprConvenio"].ToString()),
-                //idEtnico=       Convert.ToInt32(dr["idEtnico"].ToString()),
-                //idFactorrh=     Convert.ToInt32(dr["idFactorrh"].ToString()),
-                //idgpoSangre=    Convert.ToInt32(dr["idgpoSangre"].ToString()),
-                //idGrdInstruc=   Convert.ToInt32(dr["idGrdInstruc"].ToString()),
-                //idParentesco=   Convert.ToInt32(dr["idParentesco"].ToString()),
-                //idReligion=     Convert.ToInt32(dr["idReligion"].ToString()),
-                //idtipoIafa=     Convert.ToInt32(dr["idtipoIafa"].ToString()),
-                //idtipoVia=      Convert.ToInt32(dr["idtipoVia"].ToString()),
-                //idUbigeoNace=   Convert.ToInt32(dr["idUbigeoNace"].ToString()),
-                //idUbigeoResi=   Convert.ToInt32(dr["idUbigeoResi"].ToString()),
-                //interior=       Convert.ToInt32(dr["interior"].ToString()),
-                //manzana=        Convert.ToInt32(dr["manzana"].ToString()),
-                //nombreVia=      dr["nombreVia"].ToString(),
-                //nroBlock=       Convert.ToInt32(dr["nroBlock"].ToString()),
-                //nroDpto=        Convert.ToInt32(dr["nroDpto"].ToString()),
-                //nroEtapa=       Convert.ToInt32(dr["nroEtapa"].ToString()),
-                //nroKm=          Convert.ToInt32(dr["nroKm"].ToString()),
-                //nroLote=        Convert.ToInt32(dr["nroLote"].ToString()),
-                //nroRuc=         Convert.ToInt32(dr["nroRuc"].ToString()),
-                //nroVia=         Convert.ToInt32(dr["nroVia"].ToString()),
-                //razonSocial=    dr["razonSocial"].ToString(),
-                //tpPersona =     Convert.ToInt32(dr["tpPersona"].ToString())
+                idPersona = Convert.ToInt32(dr["idPersona"]),
+                //estado = dr["estado"].ToString(),
+                //centroEduca = dr["centroEduca"].ToString(),
+                //condicionRuc = dr["condicionRuc"].ToString(),
+                //edad = Convert.ToInt32(dr["edad"].ToString()),
+                //estadoRuc = dr["estadoRuc"].ToString(),
+                //fotografia = dr["fotografia"].ToString(),
+                //idciaSeguro = Convert.ToInt32(dr["idciaSeguro"].ToString()),
+                //iddatoSiteds = Convert.ToInt32(dr["iddatoSiteds"].ToString()),
+                //idemprConvenio = Convert.ToInt32(dr["idemprConvenio"].ToString()),
+                //idEtnico = Convert.ToInt32(dr["idEtnico"].ToString()),
+                //idFactorrh = Convert.ToInt32(dr["idFactorrh"].ToString()),
+                //idgpoSangre = Convert.ToInt32(dr["idgpoSangre"].ToString()),
+                //idGrdInstruc = Convert.ToInt32(dr["idGrdInstruc"].ToString()),
+                //idParentesco = Convert.ToInt32(dr["idParentesco"].ToString()),
+                //idReligion = Convert.ToInt32(dr["idReligion"].ToString()),
+                //idtipoIafa = Convert.ToInt32(dr["idtipoIafa"].ToString()),
+                //idtipoVia = Convert.ToInt32(dr["idtipoVia"].ToString()),
+                //idUbigeoNace = Convert.ToInt32(dr["idUbigeoNace"].ToString()),
+                //idUbigeoResi = Convert.ToInt32(dr["idUbigeoResi"].ToString()),
+                //interior = Convert.ToInt32(dr["interior"].ToString()),
+                //manzana = Convert.ToInt32(dr["manzana"].ToString()),
+                //nombreVia = dr["nombreVia"].ToString(),
+                //nroBlock = Convert.ToInt32(dr["nroBlock"].ToString()),
+                //nroDpto = Convert.ToInt32(dr["nroDpto"].ToString()),
+                //nroEtapa = Convert.ToInt32(dr["nroEtapa"].ToString()),
+                //nroKm = Convert.ToInt32(dr["nroKm"].ToString()),
+                //nroLote = Convert.ToInt32(dr["nroLote"].ToString()),
+                //nroRuc = Convert.ToInt32(dr["nroRuc"].ToString()),
+                //nroVia = Convert.ToInt32(dr["nroVia"].ToString()),
+                //razonSocial = dr["razonSocial"].ToString(),
+                //tpPersona = Convert.ToInt32(dr["tpPersona"].ToString())
             };
         }
-        public List<T000_PERSONA> listarPersonas()
+        public List<PersonaDTO> listarPersonas()
         {
-            List<T000_PERSONA> personas = new List<T000_PERSONA>();
+            List<PersonaDTO> personas = new List<PersonaDTO>();
+            T000_PERSONA persona = new T000_PERSONA();
+            T120_EMPLEADO empleado = new T120_EMPLEADO();
+            PersonalDTO personal = new PersonalDTO();
             DataSet objects = UtilRepository.getAllData("usp_ListarPersona");
             foreach (DataRow dr in objects.Tables["Objects"].Rows)
             {
-                personas.Add(GetPersona(dr));
+                persona = GetPersona(dr);
+                empleado = EmpleadoRepository.ListarEmpleadoxIdPersona(persona.idPersona);
+                if (empleado.idEmpleado != 0)
+                {
+                    personal = new PersonalDTO
+                    {
+                        fechaIngreso = empleado.fecIngreso.Value.ToString("yyyy-MM-dd"),
+                        cargo = empleado.cargo
+                    };
+                }
+                personas.Add(new PersonaDTO()
+                {
+                    idPersona = persona.idPersona,
+                    nombres = persona.nombres,
+                    apellidoPaterno = persona.apePaterno,
+                    apellidoMaterno = persona.apeMaterno,
+                    telefono = persona.telefono,
+                    personal = personal
+                });
             }
             return personas;
         }
