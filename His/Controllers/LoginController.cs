@@ -21,6 +21,7 @@ namespace His.Controllers
             if (user.valida)
             {
                 ViewBag.error = user.mensaje;
+                Session["nombreusuario"] = "Bertol Franco Palacios";
                 return RedirectToAction("Index", "Home");
             }
             ViewBag.error = user.mensaje;

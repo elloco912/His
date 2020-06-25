@@ -14,12 +14,19 @@ namespace His.Controllers
 
         public ActionResult Index()
         {
+            string nombre = Session["nombreusuario"] as string;
+            ViewBag.nombre = nombre;
             return View();
         }
 
         public ActionResult Privacy()
         {
             return View();
+        }
+
+        public ActionResult Menu()
+        {
+            return PartialView();
         }
 
         //[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
