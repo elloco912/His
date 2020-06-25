@@ -67,10 +67,10 @@ namespace His.Repositories
         }
         public List<PersonaDTO> listarPersonas()
         {
+            List<PersonaDTO> personas = new List<PersonaDTO>();
             T000_PERSONA persona = new T000_PERSONA();
             T120_EMPLEADO empleado = new T120_EMPLEADO();
             PersonalDTO personal = new PersonalDTO();
-            List<PersonaDTO> personas = new List<PersonaDTO>();
             DataSet objects = UtilRepository.getAllData("usp_ListarPersona");
             foreach (DataRow dr in objects.Tables["Objects"].Rows)
             {
