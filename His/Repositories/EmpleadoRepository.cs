@@ -13,29 +13,13 @@ namespace His.Repositories
     {
         private static UtilRepository UtilRepository = new UtilRepository(); 
         private static PersonaRepository PersonaRepository = new PersonaRepository(); 
-        public static T120_EMPLEADO GetEmpleado(DataRow dr)
-        {
-            return _ = new T120_EMPLEADO
-            {
-                idEmpleado = Convert.ToInt32(dr["idEmpleado"]),
-                codEmpleado = dr["codEmpleado"].ToString(),
-                descArea = dr["descArea"].ToString(),
-                cargo = dr["cargo"].ToString(),
-                fecIngreso = Convert.ToDateTime(dr["fecIngreso"].ToString()),
-                salario = Convert.ToInt32(dr["salario"].ToString()),
-                genero = dr["genero"].ToString(),
-                idtpEmpleado = Convert.ToInt32(dr["idtpEmpleado"]),
-                idPersona = Convert.ToInt32(dr["idPersona"]),
-                estado = dr["estado"].ToString()
-            };
-        }
         public List<T120_EMPLEADO> listarEmpleados()
         {
             List<T120_EMPLEADO> empleados = new List<T120_EMPLEADO>();
             DataSet objects = UtilRepository.getAllData("usp_ListarEmpleado");
             foreach (DataRow dr in objects.Tables["Objects"].Rows)
             {
-                empleados.Add(GetEmpleado(dr));
+                empleados.Add(UtilRepository.GetEmpleado(dr,1));
             }
             return empleados;
         }
@@ -46,7 +30,7 @@ namespace His.Repositories
             DataSet objects = UtilRepository.getDataByName("usp_ListarxNombreEmpleado", nombres);
             foreach (DataRow dr in objects.Tables["Objects"].Rows)
             {
-                empleado = GetEmpleado(dr);
+                empleado = UtilRepository.GetEmpleado(dr,1);
             }
             return empleado;
         }
@@ -57,7 +41,7 @@ namespace His.Repositories
             DataSet objects = UtilRepository.getDataById("usp_ListarEmpleadoxIdPersona", id);
             foreach (DataRow dr in objects.Tables["Objects"].Rows)
             {
-                empleado = GetEmpleado(dr);
+                empleado = UtilRepository.GetEmpleado(dr,1);
             }
             return empleado;
         }
@@ -70,11 +54,9 @@ namespace His.Repositories
             DataSet objects = UtilRepository.getDataById("usp_ListarxIdEmpleado", (int)id);
             foreach (DataRow dr in objects.Tables["Objects"].Rows)
             {
-                empleado = GetEmpleado(dr);
+                empleado = UtilRepository.GetEmpleado(dr,1);
                 Persona = PersonaRepository.listarxIdPersona((int)empleado.idPersona);
             }
-
-
             return Persona;
         }
         public string eliminarEmpleado(int id)
