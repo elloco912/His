@@ -1,0 +1,72 @@
+﻿@model List<His.Models.D00_TBDETALLE>
+@{
+	ViewData["Title"] = "Actualizar";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+	<div class="col-sm-12 pb-3">
+		<h1>Actualizar Tipo</h1>
+	</div>
+	<div class="col-sm-12">
+		<div class="row">
+			<div class="col-sm-6 form-inline">
+				<label> Codigo:</label>
+				<input type="text" id="nombre" class="form form-control" name="coddetTab" />
+			</div>
+			<div class="col-sm-6">
+
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="container">
+	<div class="col-sm-12 text-right pt-4">
+		<a type="submit" style="color:white;" class="btn btn-primary" onclick="cargarmodalCrearDetalle()" >Crear</a><br /><br />
+	</div>
+	<div class="col-sm-12">
+		<table class="table table-bordered table-hover" id="detallegrid">
+			<thead>
+				<tr>
+					<th>
+						Codigo
+					</th>
+					<th>
+						Descripcion
+					</th>
+					<th>
+						Acciones
+					</th>
+				</tr>
+			</thead>
+			<tbody class="tbody">
+				@*	@foreach (var item in Model)
+					{
+						<tr>
+							<td>@item.coddetTab</td>
+							<td>@item.descripcion</td>
+							<td>
+								<a type="submit" href="" class="edit btn btn-primary" aria-hidden="true">
+									<i class="fas fa-edit"></i>
+								</a>
+								<a type="submit" href="" class="delete btn btn-danger" aria-hidden="true">
+									<i class="fas fa-minus"></i>
+								</a>
+							</td>
+						</tr>
+					}*@
+			</tbody>
+		</table>
+	</div>
+</div>
+<div class="modal fade" id="modalagregardetalle" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+</div>
+<div class="modal fade" id="modaleditardetalle" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+</div>
+<div class="modal fade" id="modalanulardetalle" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+</div>
+<script src="~/Scripts/cargavistaparcial.js"></script>
+
+
+

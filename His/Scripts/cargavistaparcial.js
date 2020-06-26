@@ -172,6 +172,70 @@
 			}
 		});
 	});
+
+	$("#detallegrid .edit").click(function () {
+		var id = $(this).closest("tr").find("td").eq(0).html();
+		$.ajax({
+			type: "GET",
+			url: "/Tablas/EditarDetalle",
+			data: { id: id },
+			contentType: "application/json; charset=utf-8",
+			dataType: "html",
+			success: function (response) {
+				$('#modaleditardetalle').html(response);
+				$('#modaleditardetalle').modal('show');
+			},
+			failure: function (response) {
+				alert(response.responseText);
+			},
+			error: function (response) {
+				alert(response.responseText);
+			}
+		});
+	});
+
+	$("#generalgrid .delete").click(function () {
+		var id = $(this).closest("tr").find("td").eq(0).html();
+		$.ajax({
+			type: "GET",
+			url: "/Tablas/DeleteTipo",
+			data: { id: id },
+			contentType: "application/json; charset=utf-8",
+			dataType: "html",
+			success: function (response) {
+				$('#modalanulartipo').html(response);
+				$('#modalanulartipo').modal('show');
+			},
+			failure: function (response) {
+				alert(response.responseText);
+			},
+			error: function (response) {
+				alert(response.responseText);
+			}
+		});
+	});
+
+	$("#detallegrid .delete").click(function () {
+		var id = $(this).closest("tr").find("td").eq(0).html();
+		$.ajax({
+			type: "GET",
+			url: "/Tablas/DeleteDetalle",
+			data: { id: id },
+			contentType: "application/json; charset=utf-8",
+			dataType: "html",
+			success: function (response) {
+				$('#modalanulardetalle').html(response);
+				$('#modalanulardetalle').modal('show');
+			},
+			failure: function (response) {
+				alert(response.responseText);
+			},
+			error: function (response) {
+				alert(response.responseText);
+			}
+		});
+	});
+
 });
 
 $(document).on('change', '#idmedico', function (event) {
@@ -191,6 +255,25 @@ function cargarmodalCrearTipo() {
 		success: function (response) {
 			$('#modalagregartipo').html(response);
 			$('#modalagregartipo').modal('show');
+		},
+		failure: function (response) {
+			alert(response.responseText);
+		},
+		error: function (response) {
+			alert(response.responseText);
+		}
+	});
+}
+
+function cargarmodalCrearDetalle() {
+	$.ajax({
+		type: "GET",
+		url: "/Tablas/AgregarDetalle",
+		contentType: "application/json; charset=utf-8",
+		dataType: "html",
+		success: function (response) {
+			$('#modalagregardetalle').html(response);
+			$('#modalagregardetalle').modal('show');
 		},
 		failure: function (response) {
 			alert(response.responseText);

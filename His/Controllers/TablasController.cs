@@ -85,14 +85,14 @@ namespace His.Controllers
             return RedirectToAction("Index", "Tablas");
         }
 
-        public ActionResult Actualizar(int id)
+        public ActionResult VistaDetalle()
         {
             return View();
         }
 
         // POST: Detalle/Edit/5
         [HttpPost]
-        public ActionResult Actualizar(int id, FormCollection collection)
+        public ActionResult VistaDetalle(int id, FormCollection collection)
         {
             try
             {
@@ -104,29 +104,80 @@ namespace His.Controllers
             }
         }
 
-        // GET: Detalle/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult AgregarDetalle()
+        {
+            return PartialView();
+        }
+
+        [HttpPost]
+        public ActionResult AgregarDetalle(D00_TBDETALLE modelo)
+        {
+            TempData["mensajedetalle"] = _detalleRepository.insertarDetalle(modelo);
+            return RedirectToAction("Index", "VistaDetalle");
+        }
+
+        public ActionResult EditarDetalle(int? id)
         {
             if (id == null)
             {
                 return HttpNotFound();
             }
+            D00_TBDETALLE detalle = _detalleRepository.listarxIdDetalle(id);
+            return PartialView(detalle);
+        }
 
-            var d00_TBDETALLE = _generalRepository.listarxIdGeneral(id);
-            if (d00_TBDETALLE == null)
-            {
-                return HttpNotFound();
-            }
+        [HttpPost]
+        public ActionResult EditarDetalle(int id)
+        {
+            D00_TBDETALLE detalle = _detalleRepository.listarxIdDetalle(id);
+            var mensaje = _detalleRepository.actualizarDetalle(detalle);
+            TempData["mensajedetalle"] = mensaje;
+            return RedirectToAction("Index", "VistaDetalle");
+        }
 
-            return View(d00_TBDETALLE);
+        // GET: Detalle/Delete/5
+        public ActionResult DeleteTipo(int id)
+        {
+            D00_TBGENERAL general = _generalRepository.listarxIdDetalle(id);
+            return PartialView(general);
         }
 
         // POST: Detalle/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id)
+        public ActionResult DeleteTipo(int id, FormCollection collection)
         {
-            _generalRepository.eliminarGeneral(id);
-            return RedirectToAction(nameof(Index));
+            try
+            {
+                _generalRepository.eliminarDetalle(id);
+
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        public ActionResult DeleteDetalle(int id)
+        {
+            D00_TBGENERAL general = _generalRepository.listarxIdDetalle(id);
+            return PartialView(general);
+        }
+
+        // POST: Detalle/Delete/5
+        [HttpPost]
+        public ActionResult DeleteDetalle (int id, FormCollection collection)
+        {
+            try
+            {
+                _generalRepository.eliminarDetalle(id);
+
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
         }
     }
 }

@@ -55,7 +55,7 @@ namespace His.Repositories
             }
             return detalles;
         }
-        public D00_TBDETALLE listarxIdDetalle(int id)
+        public D00_TBDETALLE listarxIdDetalle(int? id)
         {
             D00_TBDETALLE detalle = new D00_TBDETALLE();
 
