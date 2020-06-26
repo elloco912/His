@@ -138,7 +138,7 @@ namespace His.Controllers
         // GET: Detalle/Delete/5
         public ActionResult DeleteTipo(int id)
         {
-            D00_TBGENERAL general = _generalRepository.listarxIdDetalle(id);
+            D00_TBGENERAL general = _generalRepository.listarxIdGeneral(id);
             return PartialView(general);
         }
 
@@ -148,7 +148,7 @@ namespace His.Controllers
         {
             try
             {
-                _generalRepository.eliminarDetalle(id);
+                _generalRepository.eliminarGeneral(id);
 
                 return RedirectToAction("Index");
             }
@@ -160,7 +160,7 @@ namespace His.Controllers
 
         public ActionResult DeleteDetalle(int id)
         {
-            D00_TBGENERAL general = _generalRepository.listarxIdDetalle(id);
+            D00_TBGENERAL general = _generalRepository.listarxIdGeneral(id);
             return PartialView(general);
         }
 
@@ -170,7 +170,7 @@ namespace His.Controllers
         {
             try
             {
-                _generalRepository.eliminarDetalle(id);
+                _generalRepository.eliminarGeneral(id);
 
                 return RedirectToAction("Index");
             }

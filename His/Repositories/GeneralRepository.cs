@@ -19,7 +19,8 @@ namespace His.Repositories
                 codTab = dr["codTab"].ToString(),
                 fechaCreate = DateTime.Parse(dr["fechaCreate"].ToString()),
                 tipo = dr["tipo"].ToString(),
-                usuCreate = dr["usuCreate"].ToString()
+                usuCreate = dr["usuCreate"].ToString(),
+                estado = int.Parse(dr["estado"].ToString())
             };
         }
         public List<D00_TBGENERAL> listarGenerals()
