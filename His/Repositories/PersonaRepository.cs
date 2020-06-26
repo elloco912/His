@@ -14,6 +14,7 @@ namespace His.Repositories
     {
         private static UtilRepository UtilRepository = new UtilRepository();
         private static EmpleadoRepository EmpleadoRepository = new EmpleadoRepository();
+        private static MedicoRepository MedicoRepository = new MedicoRepository();
         public static T000_PERSONA GetPersona(Object objeto,int tipo)
         {
             if (tipo == 1)
@@ -130,9 +131,8 @@ namespace His.Repositories
             {
                 T000_PERSONA persona = new T000_PERSONA();
                 persona = GetPersona(dr, 1);
-                T120_EMPLEADO empleado = new T120_EMPLEADO();
-                empleado = EmpleadoRepository.ListarEmpleadoxIdPersona(persona.idPersona);
-                if (empleado.idEmpleado != 0)
+                T120_EMPLEADO empleado = EmpleadoRepository.ListarEmpleadoxIdPersona(persona.idPersona);
+                if (empleado != null)
                 {
                     personal = new PersonalDTO
                     {
@@ -142,12 +142,13 @@ namespace His.Repositories
                 }
                 personas.Add(new PersonaDTO()
                 {
+                    idPersona = persona.idPersona,
                     nombres = persona.nombres,
                     apellidoPaterno = persona.apePaterno,
                     apellidoMaterno = persona.apeMaterno,
                     telefono = persona.telefono,
                     personal = personal
-                });
+                }) ;
             }
             return personas;
         }
@@ -160,23 +161,29 @@ namespace His.Repositories
             foreach (DataRow dr in objects.Tables["Objects"].Rows)
             {
                 persona = GetPersona(dr,1);
-                personal = new PersonalDTO()
-                {
-                    idEmpleado = int.Parse(UtilRepository.GetData(dr,"idEmpleado")),
-                    idTipoEmpleado = int.Parse(UtilRepository.GetData(dr, "idTipoEmpleado")),
-                    fechaIngreso = (DateTime.Parse(UtilRepository.GetData(dr, "idTipoEmpleado"))).ToString("yyyy-MM-dd"),
-                    cargo = UtilRepository.GetData(dr, "cargo"),
-                    descArea = UtilRepository.GetData(dr,"descArea")
-                };
-                if (personal.idTipoEmpleado == 109)
-                {
-                    personal.idEspecialidad = int.Parse(UtilRepository.GetData(dr, "idEspecialidad"));
-                    personal.idMedico = int.Parse(UtilRepository.GetData(dr, "idMedico"));
-                    personal.numeroColegio =    int.Parse(UtilRepository.GetData(dr, "numeroColegio"));
+                T120_EMPLEADO empleado = EmpleadoRepository.ListarEmpleadoxIdPersona(persona.idPersona);
+                if (empleado != null)
+                { 
+                    personal = new PersonalDTO()
+                    {
+                        idEmpleado = empleado.idEmpleado,
+                        idTipoEmpleado = empleado.idtpEmpleado,
+                        fechaIngreso = empleado.fecIngreso.Value.ToString("yyyy-MM-dd"),
+                        cargo = empleado.cargo,
+                        descArea = empleado.descArea
+                    };
+                    if (personal.idTipoEmpleado == 109)
+                    {
+                        T212_MEDICO medico = MedicoRepository.listarMedicoxIdEmpleado(empleado.idEmpleado);
+                        personal.idEspecialidad = medico.idEspecialidad;
+                        personal.idMedico = medico.idMedico;
+                        personal.numeroColegio = medico.nroColegio;
+                    }
                 }
             }
             PersonaDTO Persona = new PersonaDTO()
             {
+                idPersona = persona.idPersona,
                 nombres = persona.nombres,
                 apellidoPaterno = persona.apePaterno,
                 apellidoMaterno = persona.apeMaterno,

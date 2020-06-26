@@ -116,14 +116,14 @@ namespace His.Controllers
         }
 
         // GET: Persona/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return HttpNotFound();
             }
 
-            var persona = _personaRepository.listarxIdPersona(id);
+            var persona = _personaRepository.listarxIdPersona((int)id);
             if (persona == null)
             {
                 return HttpNotFound();
