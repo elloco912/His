@@ -23,6 +23,17 @@ namespace His.Controllers
             return View(_generalRepository.listarGenerals());
         }
 
+        [HttpPost]
+        public ActionResult Index(string codigo)
+        {
+            if (codigo == "")
+            {
+             return RedirectToAction("Index");
+            }
+            List<D00_TBGENERAL> modelo = _generalRepository.listarxCodigoGeneral(codigo);
+            return View(modelo);
+        }
+
         // GET: Detalle/Details/5
         public ActionResult Details(int? id)
         {
