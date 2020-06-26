@@ -12,6 +12,7 @@ namespace His.Repositories
     public class EmpleadoRepository 
     {
         private static UtilRepository UtilRepository = new UtilRepository(); 
+        private static PersonaRepository PersonaRepository = new PersonaRepository(); 
         public static T120_EMPLEADO GetEmpleado(DataRow dr)
         {
             return _ = new T120_EMPLEADO
@@ -51,7 +52,7 @@ namespace His.Repositories
         }
         public T120_EMPLEADO ListarEmpleadoxIdPersona(int id)
         {
-            T120_EMPLEADO empleado = new T120_EMPLEADO();
+            T120_EMPLEADO empleado = null;
 
             DataSet objects = UtilRepository.getDataById("usp_ListarEmpleadoxIdPersona", id);
             foreach (DataRow dr in objects.Tables["Objects"].Rows)
@@ -70,17 +71,7 @@ namespace His.Repositories
             foreach (DataRow dr in objects.Tables["Objects"].Rows)
             {
                 empleado = GetEmpleado(dr);
-                Persona = new PersonaDTO()
-                {
-                    idPersona = int.Parse(UtilRepository.GetData(dr, "idPersona")),
-                    nombres = UtilRepository.GetData(dr, "idPersona"),
-                    apellidoPaterno = UtilRepository.GetData(dr, "idPersona"),
-                    apellidoMaterno = UtilRepository.GetData(dr, "idPersona"),
-                    fecNacimiento = UtilRepository.GetData(dr, "idPersona"),
-                    telefono = UtilRepository.GetData(dr, "idPersona"),
-                    numeroDocumento = int.Parse(UtilRepository.GetData(dr, "idPersona")),
-                    ruc = int.Parse(UtilRepository.GetData(dr, "idPersona"))
-                };
+                Persona = PersonaRepository.listarxIdPersona((int)empleado.idPersona);
             }
 
 

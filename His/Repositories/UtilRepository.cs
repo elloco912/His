@@ -17,31 +17,24 @@ namespace His.Repositories
 			public string mensaje { get; set; }
             public bool valida { get; set; }
         }
-		public static string GetData(DataRow dr, string dato)
-		{
-			return dr[dato].ToString();
-		}
 		public DataSet getAllData(string query)
 		{
-            try
+			DataSet objects = new DataSet();
+			try
             {
 				con.Open();
 				SqlCommand cm = new SqlCommand(query, con);
 				cm.CommandType = CommandType.StoredProcedure;
 				SqlDataAdapter adapter = new SqlDataAdapter(cm);
-				DataSet objects = new DataSet();
 				adapter.Fill(objects, "Objects");
-				con.Close();
-				return objects;
             }
-			catch(Exception e)
-            {
-				Console.Write(e.Message);
-				return new DataSet();
-			}
+			catch(Exception e){Console.Write(e.Message);}
+			finally{con.Close();}
+			return objects;
 		}
 		public DataSet getDataById(string query,int id)
 		{
+			DataSet objects = new DataSet();
 			try
 			{
 				con.Open();
@@ -49,7 +42,6 @@ namespace His.Repositories
 				cm.CommandType = CommandType.StoredProcedure;
 				cm.Parameters.AddWithValue("@Id", id);
 				SqlDataAdapter adapter = new SqlDataAdapter(cm);
-				DataSet objects = new DataSet();
 				adapter.Fill(objects, "Objects");
 				con.Close();
 				return objects;
@@ -57,11 +49,13 @@ namespace His.Repositories
 			catch(Exception e)
             {
 				Console.Write(e.Message);
-				return new DataSet();
 			}
+            finally { con.Close();}
+			return objects;
 		}
 		public DataSet getDataByName(string query, string nombres)
 		{
+			DataSet objects = new DataSet();
 			try
 			{
 				con.Open();
@@ -69,7 +63,6 @@ namespace His.Repositories
 				cm.CommandType = CommandType.StoredProcedure;
 				cm.Parameters.AddWithValue("@nombres", nombres);
 				SqlDataAdapter adapter = new SqlDataAdapter(cm);
-				DataSet objects = new DataSet();
 				adapter.Fill(objects, "Objects");
 				con.Close();
 				return objects;
@@ -77,11 +70,13 @@ namespace His.Repositories
 			catch (Exception e)
 			{
 				Console.Write(e.Message);
-				return new DataSet();
 			}
+			finally { con.Close(); }
+			return objects;
 		}
 		public DataSet getDataByDni(string query, int prmDni)
 		{
+			DataSet objects = new DataSet();
 			try
 			{
 				con.Open();
@@ -89,7 +84,6 @@ namespace His.Repositories
 				cm.CommandType = CommandType.StoredProcedure;
 				cm.Parameters.AddWithValue("@prmDni", prmDni);
 				SqlDataAdapter adapter = new SqlDataAdapter(cm);
-				DataSet objects = new DataSet();
 				adapter.Fill(objects, "Objects");
 				con.Close();
 				return objects;
@@ -97,11 +91,13 @@ namespace His.Repositories
 			catch (Exception e)
 			{
 				Console.Write(e.Message);
-				return new DataSet();
 			}
+			finally { con.Close(); }
+			return objects;
 		}
 		public string deleteById(string query, int id)
         {
+			string mensaje;
 			try
 			{
 				con.Open();
@@ -110,13 +106,15 @@ namespace His.Repositories
 				cm.Parameters.AddWithValue("@id", id);
 				cm.ExecuteNonQuery();
 				con.Close();
-				return "Eliminacion incorrecta";
+				mensaje =  "Eliminacion incorrecta";
 			}
 			catch(Exception e)
             {
 				Console.Write(e.Message);
-				return "Eliminacion incorrecta";
+				mensaje =  "Eliminacion incorrecta";
 			}
+            finally { con.Close(); }
+			return mensaje;
 		}
 		public ValidacionLogueo logueo(string query,string loginUser, string claveUser)
         {
@@ -140,12 +138,12 @@ namespace His.Repositories
 					logueo = new ValidacionLogueo() { mensaje = "Error en Logueo", valida = false };
 				}
 				dr.Close();
-				con.Close();
 			}
 			catch(Exception e)
             {
 				Console.Write(e.Message);
             }
+            finally { con.Close(); }
             return logueo;
 		}
 		public string insertaActualiza (string query,Object objecto,int tipo)
@@ -175,13 +173,13 @@ namespace His.Repositories
 				cm.ExecuteNonQuery();
 				if (tipo == 1) mensaje = "Ingreso";
 				else mensaje = "Actualizacion";
-				con.Close();
 			}
             catch(Exception e)
             {
 				Console.WriteLine(e.Message);
 				return mensaje += "Error en la transaccion";
             }
+            finally { con.Close(); }
 			return mensaje += " con Exito";
 		}
 	}

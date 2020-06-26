@@ -68,6 +68,7 @@ namespace His.Repositories
         }
         public string actualizarGeneral(D00_TBGENERAL general)
         {
+            general.fechaCreate = DateTime.Now;
             return UtilRepository.insertaActualiza("usp_ActualizartbGeneral", general, 2);
         }
     }

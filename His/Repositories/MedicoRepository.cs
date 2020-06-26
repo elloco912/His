@@ -50,6 +50,18 @@ namespace His.Repositories
             }
             return Medico;
         }
+
+        public T212_MEDICO listarMedicoxIdEmpleado(int id)
+        {
+            T212_MEDICO Medico = new T212_MEDICO();
+
+            DataSet objects = UtilRepository.getDataById("usp_ListarMedicoxIdEmpleado", id);
+            foreach (DataRow dr in objects.Tables["Objects"].Rows)
+            {
+                Medico = GetMedico(dr);
+            }
+            return Medico;
+        }
         public T212_MEDICO listarxNombre(string nombres)
         {
             T212_MEDICO medico = new T212_MEDICO();
