@@ -12,7 +12,9 @@ namespace His.Data.Repositories
     {
         public SqlConnection getConexion(string conexion)
         {
-            SqlConnection sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["CEM"].ToString());
+            SqlConnection sqlConnection;
+            if (conexion == "") sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["CEM"].ToString());
+            else sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings[conexion].ToString());
             return sqlConnection;
         }
     }
