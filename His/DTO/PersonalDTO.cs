@@ -17,8 +17,8 @@ namespace His.DTO
         public int? idTipoEmpleado { get; set; }
         public string fechaIngreso { get; set; }
 
-        [MaxLength(5)]
-        [Required(ErrorMessage = "Ingrese numero de colegio")]
+      //  [MaxLength(5)]
+      //  [Required(ErrorMessage = "Ingrese numero de colegio")]
         public int? numeroColegio { get; set; }
         public string cargo { get; set; }
         public int? idEspecialidad { get; set; }

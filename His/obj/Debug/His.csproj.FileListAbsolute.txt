@@ -344,6 +344,7 @@ C:\Users\User\Desktop\His\His\His\bin\es\System.Web.Razor.resources.dll
 C:\Users\User\Desktop\His\His\His\bin\es\System.Web.WebPages.resources.dll
 C:\Users\User\Desktop\His\His\His\bin\es\System.Web.WebPages.Deployment.resources.dll
 C:\Users\User\Desktop\His\His\His\bin\es\System.Web.WebPages.Razor.resources.dll
+C:\Users\User\Desktop\His\His\His\obj\Debug\His.csprojAssemblyReference.cache
 C:\Users\User\Desktop\His\His\His\obj\Debug\His.csproj.CoreCompileInputs.cache
 C:\Users\User\Desktop\His\His\His\obj\Debug\His.csproj.CopyComplete
 C:\Users\User\Desktop\His\His\His\obj\Debug\His.dll
