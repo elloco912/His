@@ -348,3 +348,4 @@ C:\Users\User\Desktop\His\His\His\bin\EntityFramework.dll
 C:\Users\User\Desktop\His\His\His\bin\EntityFramework.SqlServer.dll
 C:\Users\User\Desktop\His\His\His\bin\EntityFramework.xml
 C:\Users\User\Desktop\His\His\His\bin\EntityFramework.SqlServer.xml
+F:\CEM\His\obj\Debug\His.csprojAssemblyReference.cache

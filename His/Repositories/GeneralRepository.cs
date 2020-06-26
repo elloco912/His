@@ -10,7 +10,7 @@ namespace His.Repositories
     public class GeneralRepository
     {
         public UtilRepository UtilRepository = new UtilRepository();
-        public static D00_TBGENERAL GetDetalle(DataRow dr)
+        public static D00_TBGENERAL GetGeneral(DataRow dr)
         {
             return _ = new D00_TBGENERAL
             {
@@ -22,13 +22,13 @@ namespace His.Repositories
                 usuCreate = dr["usuCreate"].ToString()
             };
         }
-        public List<D00_TBGENERAL> listarDetalles()
+        public List<D00_TBGENERAL> listarGenerals()
         {
             List<D00_TBGENERAL> detalles = new List<D00_TBGENERAL>();
             DataSet objects = UtilRepository.getAllData("usp_ListartbGeneral");
             foreach (DataRow dr in objects.Tables["Objects"].Rows)
             {
-                detalles.Add(GetDetalle(dr));
+                detalles.Add(GetGeneral(dr));
             }
             return detalles;
         }
@@ -39,34 +39,35 @@ namespace His.Repositories
             DataSet objects = UtilRepository.getDataByName("usp_ListarxNombretbGeneral", nombres);
             foreach (DataRow dr in objects.Tables["Objects"].Rows)
             {
-                detalle = GetDetalle(dr);
+                detalle = GetGeneral(dr);
             }
             return detalle;
         }
-        public D00_TBGENERAL listarxIdDetalle(int? id)
+        public D00_TBGENERAL listarxIdGeneral(int? id)
         {
             D00_TBGENERAL detalle = new D00_TBGENERAL();
 
             DataSet objects = UtilRepository.getDataById("usp_ListarxIdtbGeneral", (int)id);
             foreach (DataRow dr in objects.Tables["Objects"].Rows)
             {
-                detalle = GetDetalle(dr);
+                detalle = GetGeneral(dr);
             }
 
 
             return detalle;
         }
-        public string eliminarDetalle(int id)
+        public string eliminarGeneral(int id)
         {
             return UtilRepository.deleteById("usp_EliminartbGeneral", id);
         }
-        public string insertarDetalle(D00_TBGENERAL empleado)
+        public string insertarGeneral(D00_TBGENERAL general)
         {
-            return UtilRepository.insertaActualiza("usp_InsertartbGeneral", empleado, 1);
+            general.fechaCreate = DateTime.Now;
+            return UtilRepository.insertaActualiza("usp_InsertartbGeneral", general, 1);
         }
-        public string actualizarDetalle(D00_TBGENERAL empleado)
+        public string actualizarGeneral(D00_TBGENERAL general)
         {
-            return UtilRepository.insertaActualiza("usp_ActualizartbGeneral", empleado, 2);
+            return UtilRepository.insertaActualiza("usp_ActualizartbGeneral", general, 2);
         }
     }
 }

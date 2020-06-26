@@ -259,6 +259,7 @@
     <Content Include="Views\Tablas\Index.cshtml" />
     <Content Include="Views\Tablas\EditarTipo.cshtml" />
     <Content Include="Views\Tablas\AgregarTipo.cshtml" />
+    <Content Include="Views\Tablas\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
