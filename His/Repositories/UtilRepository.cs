@@ -32,7 +32,7 @@ namespace His.Repositories
 			finally{con.Close();}
 			return objects;
 		}
-		public DataSet getDataById(string query,int id)
+		public DataSet getDataById(string query,int? id)
 		{
 			DataSet objects = new DataSet();
 			try
@@ -73,6 +73,49 @@ namespace His.Repositories
 			}
 			finally { con.Close(); }
 			return objects;
+		}
+
+		public DataSet getDataByCodigo(string query, string nombres)
+		{
+			DataSet objects = new DataSet();
+			try
+			{
+				con.Open();
+				SqlCommand cm = new SqlCommand(query, con);
+				cm.CommandType = CommandType.StoredProcedure;
+				cm.Parameters.AddWithValue("@codigo", nombres);
+				SqlDataAdapter adapter = new SqlDataAdapter(cm);
+				adapter.Fill(objects, "Objects");
+				con.Close();
+				return objects;
+			}
+			catch (Exception e)
+			{
+				Console.Write(e.Message);
+			}
+			finally { con.Close(); }
+			return objects;
+		}
+
+		public DataSet getDataByID(string query, int id)
+		{
+			try
+			{
+				con.Open();
+				SqlCommand cm = new SqlCommand(query, con);
+				cm.CommandType = CommandType.StoredProcedure;
+				cm.Parameters.AddWithValue("@id", id);
+				SqlDataAdapter adapter = new SqlDataAdapter(cm);
+				DataSet objects = new DataSet();
+				adapter.Fill(objects, "Objects");
+				con.Close();
+				return objects;
+			}
+			catch (Exception e)
+			{
+				Console.Write(e.Message);
+				return new DataSet();
+			}
 		}
 		public DataSet getDataByDni(string query, int prmDni)
 		{

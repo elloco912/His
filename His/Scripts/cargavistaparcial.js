@@ -266,9 +266,11 @@ function cargarmodalCrearTipo() {
 }
 
 function cargarmodalCrearDetalle() {
+	var id = $('#idtab').val();
 	$.ajax({
 		type: "GET",
 		url: "/Tablas/AgregarDetalle",
+		data: { id: id },
 		contentType: "application/json; charset=utf-8",
 		dataType: "html",
 		success: function (response) {

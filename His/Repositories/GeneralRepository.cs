@@ -57,6 +57,23 @@ namespace His.Repositories
 
             return detalle;
         }
+
+
+        //listar general por codigo
+        public List<D00_TBGENERAL> listarxCodigoGeneral(string codigo)
+        {
+           List<D00_TBGENERAL> detalle =  new List<D00_TBGENERAL>();
+
+            DataSet objects = UtilRepository.getDataByCodigo("usp_ListarxCodtbGeneral", codigo);
+            foreach (DataRow dr in objects.Tables["Objects"].Rows)
+            {
+                detalle.Add(GetGeneral(dr));
+            }
+
+
+            return detalle;
+        }
+
         public string eliminarGeneral(int id)
         {
             return UtilRepository.deleteById("usp_EliminartbGeneral", id);

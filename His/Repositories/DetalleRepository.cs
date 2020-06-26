@@ -1,4 +1,5 @@
-﻿using His.Models;
+﻿using His.DTO;
+using His.Models;
 using His.Repositories;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,7 @@ namespace His.Repositories
 {
     public class DetalleRepository
     {
+        public GeneralRepository generalrepository = new GeneralRepository();
         public UtilRepository UtilRepository = new UtilRepository();
         public static D00_TBDETALLE GetDetalle(DataRow dr)
         {
@@ -44,6 +46,18 @@ namespace His.Repositories
             }
             return detalle;
         }
+        public List<D00_TBDETALLE> listarxDetallexIdGeneral(int? id)
+        {
+            List<D00_TBDETALLE> detalles = new List<D00_TBDETALLE>();
+
+            DataSet objects = UtilRepository.getDataById("usp_ListartbDetallexIdtbGeneral", id);
+            foreach (DataRow dr in objects.Tables["Objects"].Rows)
+            {
+                detalles.Add(GetDetalle(dr));
+            }
+            return detalles;
+        }
+
         public List<D00_TBDETALLE> listarxDetallexNombreGeneral(string nombres)
         {
             List<D00_TBDETALLE> detalles = new List<D00_TBDETALLE>();
@@ -79,6 +93,16 @@ namespace His.Repositories
         public string actualizarDetalle(D00_TBDETALLE detalle)
         {
             return UtilRepository.insertaActualiza("usp_ActualizartbDetalle", detalle, 2);
+        }
+
+        public DetalleDTO GetDetalle(int? id)
+        {
+            DetalleDTO dto = new DetalleDTO();
+            D00_TBGENERAL general = generalrepository.listarxIdGeneral(id);
+            dto.idtab = general.idTab;
+            dto.codigo = general.codTab;
+            dto.ldetalle = listarxDetallexIdGeneral(id);
+            return dto;
         }
     }
 }

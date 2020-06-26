@@ -10,6 +10,8 @@
 		</div>
 		@using (Html.BeginForm())
 		{
+			@Html.HiddenFor(m => m.idTab)
+			@Html.HiddenFor(m => m.idDet)
 			<div class="modal-body">
 				<div class="row">
 					<div class="col-md-6">
