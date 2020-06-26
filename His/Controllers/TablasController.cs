@@ -15,13 +15,19 @@ namespace His.Controllers
         // GET: Detalle
         public ActionResult Index()
         {
-            return View(_generalRepository.listarDetalles());
+            return View(_generalRepository.listarGenerals());
         }
 
         // GET: Detalle/Details/5
         public ActionResult Details(int? id)
         {
-            return View(_detalleRepository.listarxIdDetalle((int)id));
+            var d00_TB = _generalRepository.listarxIdGeneral((int)id);
+            if (d00_TB == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(d00_TB);
         }
 
         // GET: Detalle/Create
@@ -48,7 +54,7 @@ namespace His.Controllers
 
         // GET: Detalle/Edit/5
 
-            public ActionResult AgregarTipo()
+        public ActionResult AgregarTipo()
         {
             return PartialView();
         }
@@ -56,7 +62,7 @@ namespace His.Controllers
         [HttpPost]
         public ActionResult AgregarTipo(D00_TBGENERAL modelo)
         {
-            TempData["mensajetipo"] = _generalRepository.insertarDetalle(modelo);
+            TempData["mensajetipo"] = _generalRepository.insertarGeneral(modelo);
             return RedirectToAction("Index", "Tablas");
         }
 
@@ -66,22 +72,21 @@ namespace His.Controllers
             {
                 return HttpNotFound();
             }
-            D00_TBGENERAL general = _generalRepository.listarxIdDetalle(id);
+            D00_TBGENERAL general = _generalRepository.listarxIdGeneral(id);
             return PartialView(general);
         }
 
         [HttpPost]
         public ActionResult EditarTipo(int id)
         {
-            D00_TBGENERAL general = _generalRepository.listarxIdDetalle(id);
-            var mensaje = _generalRepository.actualizarDetalle(general);
+            D00_TBGENERAL general = _generalRepository.listarxIdGeneral(id);
+            var mensaje = _generalRepository.actualizarGeneral(general);
             TempData["mensajetipo"] = mensaje;
             return RedirectToAction("Index", "Tablas");
         }
 
         public ActionResult VistaDetalle()
         {
-            
             return View();
         }
 
@@ -91,8 +96,6 @@ namespace His.Controllers
         {
             try
             {
-                // TODO: Add update logic here
-
                 return RedirectToAction("Index");
             }
             catch
@@ -135,7 +138,7 @@ namespace His.Controllers
         // GET: Detalle/Delete/5
         public ActionResult DeleteTipo(int id)
         {
-            D00_TBGENERAL general = _generalRepository.listarxIdDetalle(id);
+            D00_TBGENERAL general = _generalRepository.listarxIdGeneral(id);
             return PartialView(general);
         }
 
@@ -145,7 +148,7 @@ namespace His.Controllers
         {
             try
             {
-                _generalRepository.eliminarDetalle(id);
+                _generalRepository.eliminarGeneral(id);
 
                 return RedirectToAction("Index");
             }
@@ -157,7 +160,7 @@ namespace His.Controllers
 
         public ActionResult DeleteDetalle(int id)
         {
-            D00_TBGENERAL general = _generalRepository.listarxIdDetalle(id);
+            D00_TBGENERAL general = _generalRepository.listarxIdGeneral(id);
             return PartialView(general);
         }
 
@@ -167,7 +170,7 @@ namespace His.Controllers
         {
             try
             {
-                _generalRepository.eliminarDetalle(id);
+                _generalRepository.eliminarGeneral(id);
 
                 return RedirectToAction("Index");
             }

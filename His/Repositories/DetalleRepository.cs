@@ -72,13 +72,13 @@ namespace His.Repositories
         {
             return UtilRepository.deleteById("usp_EliminartbDetalle", id);
         }
-        public string insertarDetalle(D00_TBDETALLE empleado)
+        public string insertarDetalle(D00_TBDETALLE detalle)
         {
-            return UtilRepository.insertaActualiza("usp_InsertartbDetalle", empleado, 1);
+            return UtilRepository.insertaActualiza("usp_InsertartbDetalle", detalle, 1);
         }
-        public string actualizarDetalle(D00_TBDETALLE empleado)
+        public string actualizarDetalle(D00_TBDETALLE detalle)
         {
-            return UtilRepository.insertaActualiza("usp_ActualizartbDetalle", empleado, 2);
+            return UtilRepository.insertaActualiza("usp_ActualizartbDetalle", detalle, 2);
         }
     }
 }

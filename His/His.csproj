@@ -253,14 +253,13 @@
     <Content Include="Views\Persona\Edit.cshtml" />
     <Content Include="Views\Persona\Index.cshtml" />
     <Content Include="Views\Home\Menu.cshtml" />
+    <Content Include="Views\Tablas\Actualizar.cshtml" />
+    <Content Include="Views\Tablas\AgregarDetalle.cshtml" />
     <Content Include="Views\Tablas\EditarDetalle.cshtml" />
     <Content Include="Views\Tablas\Index.cshtml" />
     <Content Include="Views\Tablas\EditarTipo.cshtml" />
     <Content Include="Views\Tablas\AgregarTipo.cshtml" />
-    <Content Include="Views\Tablas\VistaDetalle.cshtml" />
-    <Content Include="Views\Tablas\AgregarDetalle.cshtml" />
-    <Content Include="Views\Tablas\DeleteTipo.cshtml" />
-    <Content Include="Views\Tablas\DeleteDetalle.cshtml" />
+    <Content Include="Views\Tablas\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

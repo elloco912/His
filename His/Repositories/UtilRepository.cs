@@ -3,6 +3,7 @@ using System;
 using System.Data;
 using System.Data.SqlClient;
 using System.Reflection;
+using System.Runtime.Versioning;
 
 namespace His.Repositories
 {
@@ -154,12 +155,21 @@ namespace His.Repositories
             {
 				con.Open();
 				SqlCommand cm = new SqlCommand(query, con);
-				Type Datos = typeof(Object);
-				foreach (FieldInfo F
-				in Datos.GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance)) // Aqui ocurre la magia :)
+				Type Datos = objecto.GetType();
+				PropertyInfo[] props = Datos.GetProperties();
+				//foreach (FieldInfo F
+				//in Datos.GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance)) // Aqui ocurre la magia :)
+				foreach (var prop in props)
 				{
-					if((F.Name == "idPersona" || F.Name == "idEmpleado" || F.Name == "idUsuario" || F.Name == "idTab" || F.Name == "idDet") && tipo == 2)cm.Parameters.AddWithValue("@"+F.Name, F.Name);
-					else cm.Parameters.AddWithValue("@"+F.Name, F.Name);
+					string nombre = prop.Name;
+					if ((nombre == "idPersona" || nombre == "idEmpleado" || nombre == "idUsuario" || nombre == "idTab" || nombre == "idDet") && tipo == 2)
+					{
+						cm.Parameters.AddWithValue("@" + nombre, prop.GetValue(objecto) ?? DBNull.Value);
+					}
+					else
+					{
+						cm.Parameters.AddWithValue("@" + nombre, prop.GetValue(objecto) ?? DBNull.Value);
+					}
 				}
 				cm.CommandType = CommandType.StoredProcedure;
 				cm.ExecuteNonQuery();
