@@ -21,7 +21,6 @@
 		@using (Html.BeginForm())
 		{
 			@Html.AntiForgeryToken()
-			@Html.ValidationSummary(true, "", new { @class = "text-danger" })
 			<div class="row">
 				<div class="col-md-6">
 					<div class="box box-primary">
@@ -43,7 +42,7 @@
 							</div>
 							<div class="form-group">
 								@Html.TextBoxFor(m => m.numeroDocumento, new { @class = "form-control" })
-								@Html.ValidationMessageFor(model => model.numeroDocumento, "", new { @class = "text-danger" })
+								@*	@Html.ValidationMessageFor(model => model.numeroDocumento, "", new { @class = "text-danger" }) *@
 							</div>
 							<div class="form-group">
 								<label for="txtcargo">CARGO</label>
@@ -56,7 +55,7 @@
 							</div>
 							<div class="form-group">
 								@Html.TextBoxFor(m => m.telefono, new { @class = "form-control" })
-								@Html.ValidationMessageFor(model => model.telefono, "", new { @class = "text-danger" })
+								@*	@Html.ValidationMessageFor(model => model.telefono, "", new { @class = "text-danger" })*@
 							</div>
 							<div id="esp1" class="form-group">
 								<label for="txtespecialidad">ESPECIALIDAD</label>
@@ -111,7 +110,7 @@
 							</div>
 							<div id="col2" class="form-group">
 								@Html.TextBoxFor(m => m.personal.numeroColegio, new { @class = "form-control" })
-								@Html.ValidationMessageFor(model => model.personal.numeroColegio, "", new { @class = "text-danger" })
+								@*	@Html.ValidationMessageFor(model => model.personal.numeroColegio, "", new { @class = "text-danger" }) *@
 							</div>
 						</div>
 					</div>
