@@ -11,7 +11,7 @@ namespace His.Models
 		public string tipo { get; set; }
 		public DateTime? fechaCreate { get; set; }
 		public string usuCreate { get; set; }
-		public int estado { get; set; } 
+		public string estado { get; set; } 
 	}
 
 }

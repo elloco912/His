@@ -20,7 +20,7 @@ namespace His.Repositories
                 fechaCreate = DateTime.Parse(dr["fechaCreate"].ToString()),
                 tipo = dr["tipo"].ToString(),
                 usuCreate = dr["usuCreate"].ToString(),
-                estado = int.Parse(dr["estado"].ToString())
+                estado = dr["estado"].ToString()
             };
         }
         public List<D00_TBGENERAL> listarGenerals()
