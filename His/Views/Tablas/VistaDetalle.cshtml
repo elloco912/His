@@ -1,10 +1,13 @@
-﻿@model List<His.Models.D00_TBDETALLE>
+﻿@model His.DTO.DetalleDTO
 @{
 	ViewData["Title"] = "Actualizar";
 	Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <div class="container">
+	<div class="col-sm-12 pb-2">
+			@Html.ActionLink("Volver", "Index")
+	</div>
 	<div class="col-sm-12 pb-3">
 		<h1>Actualizar Tipo</h1>
 	</div>
@@ -12,7 +15,8 @@
 		<div class="row">
 			<div class="col-sm-6 form-inline">
 				<label> Codigo:</label>
-				<input type="text" id="nombre" class="form form-control" name="coddetTab" />
+				@Html.HiddenFor(m => m.idtab)
+				@Html.EditorFor(m => m.codigo, new { htmlAttributes = new { @class = "form-control", @disabled = "true" } })
 			</div>
 			<div class="col-sm-6">
 
@@ -21,14 +25,27 @@
 	</div>
 </div>
 
+@if (ViewBag.message != null)
+{
+	<div class="col-sm-12 alert alert-info alert-dismissible text-center" role="alert" style="margin-top: 15px;">
+		<button type="button" class="close" data-dismiss="alert" aria-label="close">
+			<span aria-hidden="true">&times;</span>
+		</button>
+		@ViewBag.message
+	</div>
+}
+
 <div class="container">
 	<div class="col-sm-12 text-right pt-4">
-		<a type="submit" style="color:white;" class="btn btn-primary" onclick="cargarmodalCrearDetalle()" >Crear</a><br /><br />
+		<a type="submit" style="color:white;" class="btn btn-primary" onclick="cargarmodalCrearDetalle()">Crear</a><br /><br />
 	</div>
 	<div class="col-sm-12">
 		<table class="table table-bordered table-hover" id="detallegrid">
 			<thead>
 				<tr>
+					<th>
+						Id
+					</th>
 					<th>
 						Codigo
 					</th>
@@ -41,21 +58,22 @@
 				</tr>
 			</thead>
 			<tbody class="tbody">
-				@*	@foreach (var item in Model)
-					{
-						<tr>
-							<td>@item.coddetTab</td>
-							<td>@item.descripcion</td>
-							<td>
-								<a type="submit" href="" class="edit btn btn-primary" aria-hidden="true">
-									<i class="fas fa-edit"></i>
-								</a>
-								<a type="submit" href="" class="delete btn btn-danger" aria-hidden="true">
-									<i class="fas fa-minus"></i>
-								</a>
-							</td>
-						</tr>
-					}*@
+				@foreach (var item in Model.ldetalle)
+				{
+					<tr>
+						<td>@item.idDet</td>
+						<td>@item.coddetTab</td>
+						<td>@item.descripcion</td>
+						<td>
+							<a style="color:white;" type="submit" class="edit btn btn-primary" aria-hidden="true">
+								<i class="fas fa-edit"></i>
+							</a>
+							<a style="color:white;" type="submit" class="delete btn btn-danger" aria-hidden="true">
+								<i class="fas fa-minus"></i>
+							</a>
+						</td>
+					</tr>
+				}
 			</tbody>
 		</table>
 	</div>

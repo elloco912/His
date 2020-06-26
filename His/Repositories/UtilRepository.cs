@@ -40,7 +40,7 @@ namespace His.Repositories
 				return new DataSet();
 			}
 		}
-		public DataSet getDataById(string query,int id)
+		public DataSet getDataById(string query,int? id)
 		{
 			try
 			{
@@ -68,6 +68,27 @@ namespace His.Repositories
 				SqlCommand cm = new SqlCommand(query, con);
 				cm.CommandType = CommandType.StoredProcedure;
 				cm.Parameters.AddWithValue("@nombres", nombres);
+				SqlDataAdapter adapter = new SqlDataAdapter(cm);
+				DataSet objects = new DataSet();
+				adapter.Fill(objects, "Objects");
+				con.Close();
+				return objects;
+			}
+			catch (Exception e)
+			{
+				Console.Write(e.Message);
+				return new DataSet();
+			}
+		}
+
+		public DataSet getDataByID(string query, int id)
+		{
+			try
+			{
+				con.Open();
+				SqlCommand cm = new SqlCommand(query, con);
+				cm.CommandType = CommandType.StoredProcedure;
+				cm.Parameters.AddWithValue("@id", id);
 				SqlDataAdapter adapter = new SqlDataAdapter(cm);
 				DataSet objects = new DataSet();
 				adapter.Fill(objects, "Objects");

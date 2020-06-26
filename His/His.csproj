@@ -141,6 +141,7 @@
     <Compile Include="DTO\AsignacionDTO.cs" />
     <Compile Include="DTO\CitaDTO.cs" />
     <Compile Include="DTO\CronogramaDTO.cs" />
+    <Compile Include="DTO\DetalleDTO.cs" />
     <Compile Include="DTO\PacienteDTO.cs" />
     <Compile Include="DTO\PersonaDTO.cs" />
     <Compile Include="DTO\PersonalDTO.cs" />
@@ -253,13 +254,14 @@
     <Content Include="Views\Persona\Edit.cshtml" />
     <Content Include="Views\Persona\Index.cshtml" />
     <Content Include="Views\Home\Menu.cshtml" />
-    <Content Include="Views\Tablas\Actualizar.cshtml" />
     <Content Include="Views\Tablas\AgregarDetalle.cshtml" />
     <Content Include="Views\Tablas\EditarDetalle.cshtml" />
     <Content Include="Views\Tablas\Index.cshtml" />
     <Content Include="Views\Tablas\EditarTipo.cshtml" />
     <Content Include="Views\Tablas\AgregarTipo.cshtml" />
-    <Content Include="Views\Tablas\Delete.cshtml" />
+    <Content Include="Views\Tablas\DeleteDetalle.cshtml" />
+    <Content Include="Views\Tablas\DeleteTipo.cshtml" />
+    <Content Include="Views\Tablas\VistaDetalle.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

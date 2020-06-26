@@ -21,7 +21,15 @@
 		</div>
 	</div>
 </div>
-
+@if (ViewBag.message != null)
+{
+	<div class="col-sm-12 alert alert-info alert-dismissible text-center" role="alert" style="margin-top: 15px;">
+		<button type="button" class="close" data-dismiss="alert" aria-label="close">
+			<span aria-hidden="true">&times;</span>
+		</button>
+		@ViewBag.message
+	</div>
+}
 <div class="container">
 	<div class="col-sm-12 text-right pt-4">
 		<a type="submit" style="color:white;" class="btn btn-primary" onclick="cargarmodalCrearTipo();">Crear</a><br /><br />
@@ -30,6 +38,9 @@
 		<table class="table table-bordered table-hover" id="generalgrid">
 			<thead>
 				<tr>
+					<th>
+						Id
+					</th>
 					<th>
 						Codigo
 					</th>
@@ -45,16 +56,15 @@
 				@foreach (var item in Model)
 				{
 					<tr>
+						<td>@item.idTab</td>
 						<td>@item.codTab</td>
 						<td>@item.descripcion</td>
 						<td>
 							<a type="submit" style="color:white;" class="edit btn btn-primary" aria-hidden="true">
 								<i class="fas fa-edit"></i>
 							</a>
-							<a type="submit" href="@Url.Action("VistaDetalle","Tablas")" class="btn btn-primary" aria-hidden="true">
-								<i class="fas fa-search"></i>
-							</a>
-							<a type="submit" href="@Url.Action("Delete","Tablas")" class="btn btn-danger" aria-hidden="true">
+							@Html.ActionLink("Detalle", "VistaDetalle", new { id = item.idTab}, new { @class = "btn btn-primary fas fa-search" })
+							<a type="submit" style="color:white;" class="delete btn btn-danger" aria-hidden="true">
 								<i class="fas fa-minus"></i>
 							</a>
 						</td>
