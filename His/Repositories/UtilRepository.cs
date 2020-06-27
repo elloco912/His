@@ -461,6 +461,132 @@ namespace His.Repositories
 			}
 			return Medico;
 		}
-		#endregion Metodos Complementarios
+		public static T001_PACIENTE GetPaciente(Object objeto, int tipo)
+		{
+			T001_PACIENTE Paciente = null;
+			if (tipo == 1)
+			{
+				try
+				{
+					DataRow dr = (DataRow)objeto;
+					Paciente = new T001_PACIENTE
+					{
+						idPaciente = Convert.ToInt32(dr["idPaciente"]),
+						codPaciente = dr["codPaciente"].ToString(),
+						descripcion = dr["descripcion"].ToString(),
+						nrohc = dr["nrohc"].ToString(),
+						nombreAcom = dr["nombreAcom"].ToString(),
+						cobertura = dr["cobertura"].ToString(),
+						ordenAtenMed = dr["ordenAtenMed"].ToString(),
+						nomAsegurado = dr["nomAsegurado"].ToString(),
+						codAsegurado = dr["codAsegurado"].ToString(),
+						poliza = dr["poliza"].ToString(),
+						estadoSeguro = dr["estadoSeguro"].ToString(),
+						moneda = dr["moneda"].ToString(),
+						nomContratante = dr["nomContratante"].ToString(),
+						planSalud = dr["planSalud"].ToString(),
+						beneficio = dr["beneficio"].ToString(),
+						restriccion = dr["restriccion"].ToString(),
+						convenio = dr["convenio"].ToString(),
+						codPaConvenio = dr["codPaConvenio"].ToString(),
+						dsPacConv = dr["dsPacConv"].ToString(),
+						statPaconv = dr["statPaconv"].ToString(),
+						codPacSoat = dr["codPacSoat"].ToString(),
+						dsPacSoat = dr["dsPacSoat"].ToString(),
+						statPacSoat = dr["statPacSoat"].ToString(),
+						codpacExterno = dr["codpacExterno"].ToString(),
+						dspacExter = dr["dspacExter"].ToString(),
+						stapacexter = dr["stapacexter"].ToString(),
+						idPersona = Convert.ToInt32(dr["idPersona"]),
+						estado = dr["estado"].ToString()
+					};
+					if (dr["edadAcom"].ToString() != "") Paciente.edadAcom = Convert.ToInt32(dr["edadAcom"].ToString());
+					if (dr["dniAcom"].ToString() != "") Paciente.dniAcom = Convert.ToInt32(dr["dniAcom"].ToString());
+					if (dr["idgpoSangre"].ToString() != "") Paciente.idgpoSangre = Convert.ToInt32(dr["idgpoSangre"].ToString());
+					if (dr["idFactorrh"].ToString() != "") Paciente.idFactorrh = Convert.ToInt32(dr["idFactorrh"].ToString());
+					if (dr["parentesco"].ToString() != "") Paciente.parentesco = Convert.ToInt32(dr["parentesco"].ToString());
+					if (dr["iniVigencia"].ToString() != "") Paciente.iniVigencia = Convert.ToDateTime(dr["iniVigencia"].ToString());
+					if (dr["finVigencia"].ToString() != "") Paciente.finVigencia = Convert.ToDateTime(dr["finVigencia"].ToString());
+					if (dr["tpPlanSalud"].ToString() != "") Paciente.tpPlanSalud = Convert.ToInt32(dr["tpPlanSalud"].ToString());
+					if (dr["nroPlanSalud"].ToString() != "") Paciente.nroPlanSalud = Convert.ToInt32(dr["nroPlanSalud"].ToString());
+					if (dr["tpAfiliacion"].ToString() != "") Paciente.tpAfiliacion = Convert.ToInt32(dr["tpAfiliacion"].ToString());
+					if (dr["fecAfiliacion"].ToString() != "") Paciente.fecAfiliacion = Convert.ToDateTime(dr["fecAfiliacion"].ToString());
+					if (dr["codTitular"].ToString() != "") Paciente.codTitular = Convert.ToInt32(dr["codTitular"].ToString());
+					if (dr["tpDocumento"].ToString() != "") Paciente.tpDocumento = Convert.ToInt32(dr["tpDocumento"].ToString());
+					if (dr["dniContratante"].ToString() != "") Paciente.dniContratante = Convert.ToInt32(dr["dniContratante"].ToString());
+					if (dr["codCobertura"].ToString() != "") Paciente.codCobertura = Convert.ToInt32(dr["codCobertura"].ToString());
+					if (dr["copagoFijo"].ToString() != "") Paciente.copagoFijo = Convert.ToInt32(dr["copagoFijo"].ToString());
+					if (dr["copagoVariable"].ToString() != "") Paciente.copagoVariable = Convert.ToInt32(dr["copagoVariable"].ToString());
+					if (dr["finCarencia"].ToString() != "") Paciente.finCarencia = Convert.ToInt32(dr["finCarencia"].ToString());
+					if (dr["descuento"].ToString() != "") Paciente.descuento = Convert.ToInt32(dr["descuento"].ToString());
+					if (dr["hojafiliacion"].ToString() != "") Paciente.hojafiliacion = Convert.ToBoolean(dr["hojafiliacion"].ToString());
+					if (dr["concienteDato"].ToString() != "") Paciente.concienteDato = Convert.ToBoolean(dr["concienteDato"].ToString());
+					if (dr["tpPaciente"].ToString() != "") Paciente.tpPaciente = Convert.ToInt32(dr["tpPaciente"].ToString());
+				}
+				catch (Exception e)
+				{
+					Console.WriteLine("Error en ingreso");
+				}
+			}
+            else
+            {
+				PersonaDTO persona = (PersonaDTO)objeto;
+				Paciente = new T001_PACIENTE
+				{
+					codPaciente = persona.paciente.codPaciente,
+					descripcion = persona.paciente.descripcion,
+					nrohc = persona.paciente.nrohc,
+					nombreAcom = persona.paciente.NombreAcompañante,
+					edadAcom = persona.paciente.edadAcompañante,
+					dniAcom = persona.paciente.numeroDocumentoAcompañante,
+					idgpoSangre = persona.paciente.idGrupoSanguineo,
+					idFactorrh = persona.paciente.idFactorRrh,
+					cobertura = persona.paciente.coberturaCompañia ?? persona.paciente.coberturaConvenio,
+					ordenAtenMed = persona.paciente.ordenAtencionMedicaCompañia ?? persona.paciente.ordenAtencionMedicaConvenio,
+					nomAsegurado = persona.paciente.nombreAseguradoraCompañia,
+					codAsegurado = persona.paciente.codAseguradoCompañia,
+					poliza = persona.paciente.polizaCompañia,
+					parentesco = persona.paciente.idParentescoPaciente,
+					iniVigencia = persona.paciente.inicioVigenciaCompañia ?? persona.paciente.inicioVigenciaConvenio,
+					finVigencia = persona.paciente.finVigenciaCompañia ?? persona.paciente.finVigenciaConvenio,
+					tpPlanSalud = persona.paciente.tipoPlanSaludCompañia,
+					nroPlanSalud = persona.paciente.numeroPlanSaludCompañia,
+					estadoSeguro = persona.paciente.estadoSeguro,
+					tpAfiliacion = persona.paciente.tpAfiliacion,
+					fecAfiliacion = persona.paciente.fecAfiliacion,
+					codTitular = persona.paciente.codTitular,
+					moneda = persona.paciente.moneda,
+					nomContratante = persona.paciente.nomContratante,
+					tpDocumento = persona.paciente.idTipoDocumentoAcompañante,
+					dniContratante = persona.paciente.dniContratante,
+					planSalud = persona.paciente.planSalud,
+					codCobertura = persona.paciente.codCobertura,
+					beneficio = persona.paciente.beneficio,
+					restriccion = persona.paciente.restriccion,
+					copagoFijo = persona.paciente.copagoFijo,
+					copagoVariable = persona.paciente.copagoVariable,
+					finCarencia = persona.paciente.finCarencia,
+					convenio = persona.paciente.convenio,
+					descuento = persona.paciente.descuento,
+					//codPaConvenio = persona.paciente.codPaConvenio,
+					//dsPacConv = persona.paciente.dsPacConv,
+					//statPaconv = persona.paciente.
+					//codPacSoat = dr["codPacSoat"].ToString(),
+					//dsPacSoat = dr["dsPacSoat"].ToString(),
+					//statPacSoat = dr["statPacSoat"].ToString(),
+					//codpacExterno = persona.paciente.cod,
+					//dspacExter = dr["dspacExter"].ToString(),
+					//stapacexter = dr["stapacexter"].ToString(),
+					tpPaciente = persona.paciente.idTipoPaciente,
+					idPersona = persona.idPersona,
+					//hojafiliacion = persona.paciente.afi,
+					//concienteDato = persona.paciente.concienteDato,
+					estado = persona.paciente.estadoPaciente
+				};
+				if (persona.paciente.idPaciente != null) Paciente.idPaciente = (int)persona.paciente.idPaciente;
+			}
+			return Paciente;
+		}
+		#endregion Metodos Complementarios<
 	}
 }

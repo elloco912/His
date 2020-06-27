@@ -152,7 +152,6 @@
     <Compile Include="Models\D002_PERFIL.cs" />
     <Compile Include="Models\D00_TBDETALLE.cs" />
     <Compile Include="Models\D00_TBGENERAL.cs" />
-    <Compile Include="Models\D010_PACACOMPANA.cs" />
     <Compile Include="Models\D012_CRONOMEDICO.cs" />
     <Compile Include="Models\D015_PAGO.cs" />
     <Compile Include="Models\D015_TPEMPLEADO.cs" />
@@ -160,8 +159,6 @@
     <Compile Include="Models\D025_ASIGNACAJA.cs" />
     <Compile Include="Models\ErrorViewModel.cs" />
     <Compile Include="Models\T000_PERSONA.cs" />
-    <Compile Include="Models\T001_PACASEGURADO.cs" />
-    <Compile Include="Models\T001_PACCONVENIO.cs" />
     <Compile Include="Models\T001_PACIENTE.cs" />
     <Compile Include="Models\T068_CITA.cs" />
     <Compile Include="Models\T109_ESTADOCITA.cs" />

@@ -40,7 +40,7 @@ namespace His.Models
 		public int? copagoVariable { get; set; }
 		public int? finCarencia { get; set; }
 		public string convenio { get; set; }
-		public decimal? descuento { get; set; }
+		public double? descuento { get; set; }
 		public string codPaConvenio { get; set; }
 		public string dsPacConv { get; set; }
 		public string statPaconv { get; set; }
@@ -50,7 +50,7 @@ namespace His.Models
 		public string codpacExterno { get; set; }
 		public string dspacExter { get; set; }
 		public string stapacexter { get; set; }
-		public string tpPaciente { get; set; }
+		public int? tpPaciente { get; set; }
 		public int? idPersona { get; set; }
 		public bool? hojafiliacion { get; set; }
 		public bool? concienteDato { get; set; }

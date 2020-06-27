@@ -18,9 +18,9 @@ namespace His.DTO
         public int? idGrupoSanguineo { get; set; }
         public string codPaciente { get; set; }
         public string descripcion { get; set; }
-        public int? nrohc { get; set; }
+        public string nrohc { get; set; }
         public int? idestado { get; set; }
-        public int? estadoPaciente { get; set; }
+        public string estadoPaciente { get; set; }
         #region Ubicacion
         public int? idDepartamentoUbicacion { get; set; }
         public int? idProvinciaUbicacion { get; set; }
@@ -52,18 +52,18 @@ namespace His.DTO
         public int? idParentescoCompañia { get; set; }
         public DateTime? inicioVigenciaCompañia { get; set; }
         public DateTime? finVigenciaCompañia { get; set; }
-        public string tipoPlanSaludCompañia { get; set; }
+        public int? tipoPlanSaludCompañia { get; set; }
         public int? numeroPlanSaludCompañia { get; set; }
         public string tpPlanSalud { get; set; }
         public string estadoSeguro { get; set; }
-        public string tpAfiliacion { get; set; }
+        public int? tpAfiliacion { get; set; }
         public DateTime? fecAfiliacion { get; set; }
         public int? codTitular { get; set; }
         public string moneda { get; set; }
         public string nomContratante { get; set; }
         public int? dniContratante { get; set; }
         public string planSalud { get; set; }
-        public string codCobertura { get; set; }
+        public int? codCobertura { get; set; }
         public string beneficio { get; set; }
         public string restriccion { get; set; }
         public int? copagoFijo { get; set; }
@@ -77,8 +77,8 @@ namespace His.DTO
         public string coberturaConvenio { get; set; }
         public string ordenAtencionMedicaConvenio { get; set; }
         public int? idParentesoConvenio { get; set; }
-        public string inicioVigenciaConvenio { get; set; }
-        public string finVigenciaConvenio { get; set; }
+        public DateTime? inicioVigenciaConvenio { get; set; }
+        public DateTime? finVigenciaConvenio { get; set; }
         public int? estadoConven { get; set; }
         public int? estadoConvenio { get; set; }
         #endregion
@@ -87,8 +87,7 @@ namespace His.DTO
         public int? numeroDocumentoAcompañante { get; set; }
         public string apellidoPaternoAcompañante { get; set; }
         public string apellidoMaternoAcompañante { get; set; }
-        public string primerNombreAcompañante { get; set; }
-        public string segundoNombreAcompañante { get; set; }
+        public string NombreAcompañante { get; set; }
         public int? idParentescoAcompañante { get; set; }
         public int? edadAcompañante { get; set; }
         public int? estadoAcompañante { get; set; }

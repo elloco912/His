@@ -12,7 +12,7 @@ namespace His.Models
 		public string codTransaccion { get; set; }
 		public string codTransacRetorno { get; set; }
 		public int? idFormaPago { get; set; }
-		public decimal? monto { get; set; }
+		public double? monto { get; set; }
 		public DateTime? fecRegistro { get; set; }
 		public DateTime? fecOkPasarela { get; set; }
 		public int? idCita { get; set; }
