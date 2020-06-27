@@ -194,6 +194,10 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="script.sql">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>script1.txt</LastGenOutput>
+    </Content>
     <Content Include="Scripts\ActionsPersona.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -248,7 +252,6 @@
     <Content Include="Views\Persona\Create.cshtml" />
     <Content Include="Views\Persona\Delete.cshtml" />
     <Content Include="Views\Persona\Details.cshtml" />
-    <Content Include="Views\Persona\Edit.cshtml" />
     <Content Include="Views\Persona\Index.cshtml" />
     <Content Include="Views\Home\Menu.cshtml" />
     <Content Include="Views\Tablas\AgregarDetalle.cshtml" />
@@ -261,6 +264,7 @@
     <Content Include="Views\Tablas\VistaDetalle.cshtml" />
     <Content Include="Views\Panel\Index.cshtml" />
     <Content Include="Views\Shared\_LayoutMenu.cshtml" />
+    <Content Include="Views\Persona\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -277,6 +281,7 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

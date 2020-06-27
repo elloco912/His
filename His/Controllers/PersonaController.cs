@@ -90,7 +90,6 @@ namespace His.Controllers
 
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult Edit(int? id, PersonaDTO personaDTO)
         {
             if (personaDTO != null)
