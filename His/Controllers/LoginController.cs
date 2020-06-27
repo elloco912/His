@@ -22,7 +22,7 @@ namespace His.Controllers
             {
                 ViewBag.error = user.mensaje;
                 Session["nombreusuario"] = "Bertol Franco Palacios";
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Panel");
             }
             ViewBag.error = user.mensaje;
             return View();

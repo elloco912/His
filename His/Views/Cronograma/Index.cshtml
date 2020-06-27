@@ -1,4 +1,4 @@
-﻿@model IEnumerable<His.DTO.CronogramaDTO>
+﻿@model IEnumerable<His.Models.D012_CRONOMEDICO>
 @{
 	ViewData["Title"] = "Index";
 }
@@ -38,7 +38,7 @@
 							</tr>
 						</thead>
 						<tbody>
-							@*		@foreach (var item in Model)
+									@foreach (var item in Model)
 		{
 			<tr>
 				<td>@item.idProgramMedica</td>
@@ -46,13 +46,13 @@
 				<td>@item.fechaFin</td>
 				<td>@item.hrInicio</td>
 				<td>@item.hrFin</td>
-				<td>@item.desEstado</td>
+				<td>@item.idEstado</td>
 				<td>
 					<button type="submit" class="edit btn btn-primary"><i class="fas fa-edit"></i></button>
 					<button type="submit" class="delete btn btn-danger"><i class="fas fa-minus"></i></button>
 				</td>
 			</tr>
-		} *@
+		} 
 						</tbody>
 					</table>
 				</div>

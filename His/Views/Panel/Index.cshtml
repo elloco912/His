@@ -1,14 +1,14 @@
-﻿@page
-@model HistClinica.Views.Panel.IndexModel
-@{
+﻿@{
+	Layout = "~/Views/Shared/_LayoutMenu.cshtml";
 }
+
 <!DOCTYPE html>
 
 <html>
 <head>
 	<meta name="viewport" content="width=device-width" />
 	<title></title>
-	<link href="~/css/estilospanel.css" rel="stylesheet" />
+	<link href="~/Content/estilospanel.css" rel="stylesheet" />
 </head>
 <body>
 	<div class="row">
@@ -18,16 +18,18 @@
 		<div class="col-sm-8">
 			<div class="row">
 				<div class="col-sm-4">
-					<figure class="snip1104 red">
-						<img style="width: 420px;padding-top: 30px;" src="~/Images/gestioncita.png" />
-						<figcaption>
-							<h2>Admición</h2>
-						</figcaption>
-					</figure>
+					<a href="@Url.Action("Index","Home")">
+						<figure class="snip1104 red">
+							<img style="width: 420px;padding-top: 30px;" src="~/Content/images/gestioncita.png" />
+							<figcaption>
+								<h2>Admición</h2>
+							</figcaption>
+						</figure>
+					</a>
 				</div>
 				<div class="col-sm-4">
 					<figure style="cursor: pointer;" class="snip1104 red">
-						<img style="width: 220px;padding-top: 30px;" src="~/Images/gestionar.png" />
+						<img style="width: 220px;padding-top: 30px;" src="~/Content/images/gestionar.png" />
 						<figcaption>
 							<h2>Gestionar</h2>
 						</figcaption>
@@ -35,7 +37,7 @@
 				</div>
 				<div class="col-sm-4">
 					<figure style="cursor: pointer;" class="snip1104 red">
-						<img style="width: 220px;padding-top: 30px;" src="~/Images/pago.png" />
+						<img style="width: 220px;padding-top: 30px;" src="~/Content/images/pago.png" />
 						<figcaption>
 							<h2>Pagos</h2>
 						</figcaption>
@@ -45,7 +47,7 @@
 			<div class="row">
 				<div class="col-sm-4">
 					<figure class="snip1104 red">
-						<img style="width: 420px;padding-top: 30px;" src="~/Images/reportes.png" />
+						<img style="width: 420px;padding-top: 30px;" src="~/Content/images/reportes.png" />
 						<figcaption>
 							<h2>Reportes</h2>
 						</figcaption>
