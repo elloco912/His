@@ -79,7 +79,7 @@
 				<!-- Messages Dropdown Menu -->
 				<!-- Notifications Dropdown Menu -->
 				<li class="nav-item dropdown">
-					<a class="nav-link" asp-controller="Login" asp-action="Index">
+					<a class="nav-link" href="@Url.Action("Index","Login")">
 						<i class="nav-icon fas fa-sign-out-alt" style="color:white">  Cerrar Sesion </i>
 					</a>
 				</li>
@@ -121,16 +121,6 @@
 					<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 						<!-- Add icons to the links using the .nav-icon class
 				with font-awesome or any other icon font library -->
-						<li class="nav-item ">
-							<a href="@Url.Action("Index","Panel")" class="nav-link active">
-								<i class="nav-icon fas fa-clinic-medical"></i>
-								<p>
-									Panel de Administracion
-
-								</p>
-							</a>
-						</li>
-
 						<li class="nav-item">
 							<a href="@Url.Action("Index","Persona")" class="nav-link ">
 								<i class="nav-icon fas fa-user-injured"></i>
